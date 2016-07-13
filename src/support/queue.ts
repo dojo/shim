@@ -41,23 +41,7 @@ function getQueueHandle(item: QueueItem | undefined, destructor?: (...args: any[
 
 const microTasks: QueueItem[] = [];
 let microTaskQueued = false;
-const checkMicroTaskQueue: () => void = !has('microtasks')
-	? function () {
-		if (!microTaskQueued) {
-			microTaskQueued = true;
-			queueTask(function () {
-				microTaskQueued = false;
-
-				if (microTasks.length) {
-					let item: QueueItem | undefined;
-					while (item = microTasks.shift()) {
-						executeTask(item);
-					}
-				}
-			});
-		}
-	}
-	: function () {};
+let checkMicroTaskQueue: () => void = function () {};
 
 /**
  * Schedules a callback to the macrotask queue.
@@ -120,6 +104,23 @@ export const queueTask = (function() {
 		return queueTask(callback);
 	};
 })();
+
+checkMicroTaskQueue = !has('microtasks')
+	? function () {
+		if (!microTaskQueued) {
+			microTaskQueued = true;
+			queueTask(function () {
+				microTaskQueued = false;
+
+				if (microTasks.length) {
+					let item: QueueItem | undefined;
+					while (item = microTasks.shift()) {
+						executeTask(item);
+					}
+				}
+			});
+		}
+	} : checkMicroTaskQueue;
 
 /**
  * Schedules a callback to the microtask queue.
