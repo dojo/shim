@@ -502,8 +502,10 @@ export function addPromiseTests(suite: any, Promise: PromiseType) {
 			let dfd = this.async();
 			let evilPromise = {
 				then: (f?: Function, r?: Function) => {
-					f(1);
-					f(2);
+					if (f) {
+						f(1);
+						f(2);
+					}
 				}
 			};
 
@@ -517,7 +519,7 @@ export function addPromiseTests(suite: any, Promise: PromiseType) {
 
 		'self-resolution': function () {
 			let dfd = this.async();
-			let resolve: (value?: any) => void;
+			let resolve: (value?: any) => void = () => {};
 			let promise = new Promise<void>(function (_resolve) {
 				resolve = _resolve;
 			});

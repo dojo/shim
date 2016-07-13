@@ -16,8 +16,8 @@ interface PostMessageEvent extends Event {
  * Executes a task
  * @param item The task to execute
  */
-function executeTask(item: QueueItem): void {
-	if (item.isActive) {
+function executeTask(item: QueueItem | undefined): void {
+	if (item && item.isActive) {
 		item.callback();
 	}
 }
@@ -25,13 +25,13 @@ function executeTask(item: QueueItem): void {
 /**
  * Get a handle to be able to remove an item from the queue
  */
-function getQueueHandle(item: QueueItem, destructor?: (...args: any[]) => any): Handle {
+function getQueueHandle(item: QueueItem | undefined, destructor?: (...args: any[]) => any): Handle {
 	return {
 		destroy: function () {
 			this.destroy = function () {};
-			item.isActive = false;
-			item.callback = null;
-
+			if (item) {
+				item.isActive = false;
+			}
 			if (destructor) {
 				destructor();
 			}
@@ -49,7 +49,7 @@ const checkMicroTaskQueue: () => void = !has('microtasks')
 				microTaskQueued = false;
 
 				if (microTasks.length) {
-					let item: QueueItem;
+					let item: QueueItem | undefined;
 					while (item = microTasks.shift()) {
 						executeTask(item);
 					}

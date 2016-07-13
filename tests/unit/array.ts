@@ -83,13 +83,13 @@ registerSuite({
 	'.from()': createNativeAndDojoArrayTests('es6-array-from', {
 		'from undefined: throws': function () {
 			assert.throws(function () {
-				array.from(undefined);
+				array.from(<any> undefined);
 			}, TypeError);
 		},
 
 		'from null: throws': function () {
 			assert.throws(function () {
-				array.from(null);
+				array.from(<any> null);
 			});
 		},
 
@@ -365,7 +365,7 @@ registerSuite({
 
 		'null target: throws': function () {
 			assert.throws(function () {
-				array.copyWithin(null, 0, 0);
+				array.copyWithin(<any> null, 0, 0);
 			}, TypeError);
 		},
 

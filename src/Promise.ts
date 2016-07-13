@@ -195,7 +195,7 @@ export class PromiseShim<T> implements Thenable<T> {
 					for (let i = 0; i < count; ++i) {
 						callbacks[i].call(null);
 					}
-					callbacks = null;
+					callbacks = [];
 				});
 			}
 		};
@@ -232,7 +232,7 @@ export class PromiseShim<T> implements Thenable<T> {
 				// promise has settled, whenFinished will schedule callbacks for execution on the next turn through the
 				// event loop.
 				whenFinished(() => {
-					const callback: (value?: any) => any = this.state === State.Rejected ? onRejected : onFulfilled;
+					const callback: ((value?: any) => any) | undefined = this.state === State.Rejected ? onRejected : onFulfilled;
 
 					if (typeof callback === 'function') {
 						try {
@@ -473,8 +473,8 @@ export default class Promise<T> implements Thenable<T> {
 	/**
 	 * Adds a callback to the promise to be invoked when the asynchronous operation completes successfully.
 	 */
-	then<U>(onFulfilled?: (value?: T) => (U | Thenable<U>), onRejected?: (reason?: Error) => void): Promise<U>;
-	then<U>(onFulfilled?: (value?: T) => (U | Thenable<U>), onRejected?: (reason?: Error) => (U | Thenable<U>)): Promise<U> {
+	then<U>(onFulfilled?: ((value?: T) => (U | Thenable<U>)) | null, onRejected?: (reason?: Error) => void): Promise<U>;
+	then<U>(onFulfilled?: ((value?: T) => (U | Thenable<U>)) | null, onRejected?: (reason?: Error) => (U | Thenable<U>)): Promise<U> {
 		return (<typeof Promise> this.constructor).copy(this.promise.then(onFulfilled, onRejected));
 	}
 }

@@ -159,7 +159,7 @@ export namespace Shim {
 		return target;
 	}
 
-	export function find<T>(target: ArrayLike<T>, callback: FindCallback<T>, thisArg?: {}): T {
+	export function find<T>(target: ArrayLike<T>, callback: FindCallback<T>, thisArg?: {}): T | undefined {
 		const index = findIndex<T>(target, callback, thisArg);
 		return index !== -1 ? target[index] : undefined;
 	}

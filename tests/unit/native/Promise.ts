@@ -497,8 +497,10 @@ if (has('es6-promise')) {
 					let dfd = this.async();
 					let evilPromise = {
 						then: (f?: Function, r?: Function) => {
-							f(1);
-							f(2);
+							if (f) {
+								f(1);
+								f(2);
+							}
 						}
 					};
 
@@ -512,7 +514,7 @@ if (has('es6-promise')) {
 
 				'self-resolution': function () {
 					let dfd = this.async();
-					let resolve: (value?: any) => void;
+					let resolve: (value?: any) => void = () => {};
 					let promise = new Promise(function (_resolve: any) {
 						resolve = _resolve;
 					});

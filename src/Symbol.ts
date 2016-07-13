@@ -100,7 +100,7 @@ export namespace Shim {
 		return (globalSymbols[key] = Symbol(String(key)));
 	}));
 	defineProperties(Symbol, {
-		keyFor: getValueDescriptor(function (sym: symbol): string {
+		keyFor: getValueDescriptor(function (sym: symbol): string | undefined {
 			let key: string;
 			validateSymbol(sym);
 			for (key in globalSymbols) {

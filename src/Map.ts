@@ -111,7 +111,7 @@ export namespace Shim {
 		 * @param key The key to look up
 		 * @return The value if one exists or undefined
 		 */
-		get(key: K): V {
+		get(key: K): V | undefined {
 			const index = this._indexOfKey(this._keys, key);
 			return index < 0 ? undefined : this._values[index];
 		}
