@@ -133,7 +133,7 @@ export namespace Shim {
 
 		while (count > 0) {
 			if (start in target) {
-				(<any> target)[offset] = target[start];
+				target[offset] = target[start];
 			}
 			else {
 				delete target[offset];
@@ -153,7 +153,7 @@ export namespace Shim {
 		end = normalizeOffset(end === undefined ? length : toInteger(end), length);
 
 		while (i < end) {
-			(<any> target)[i++] = value;
+			target[i++] = value;
 		}
 
 		return target;
