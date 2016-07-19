@@ -10,7 +10,8 @@
 		"sourceMap": true,
 		"target": "es5",
 		"moduleResolution": "classic",
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"noImplicitThis": true
 	},
 	"filesGlob": [
 		"./typings/index.d.ts",

@@ -27,7 +27,7 @@ function executeTask(item: QueueItem | undefined): void {
  */
 function getQueueHandle(item: QueueItem | undefined, destructor?: (...args: any[]) => any): Handle {
 	return {
-		destroy: function () {
+		destroy: function (this: any) {
 			this.destroy = function () {};
 			if (item) {
 				item.isActive = false;

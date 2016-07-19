@@ -90,7 +90,7 @@ registerSuite({
 			const array = [ 'a', 'b' ];
 			const scope = { foo: 'bar' };
 
-			forOf(array, function (value, obj) {
+			forOf(array, function (this: any, value: any, obj: any) {
 				assert.strictEqual(this, scope);
 				assert.strictEqual(obj, array);
 			}, scope);

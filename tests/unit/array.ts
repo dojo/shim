@@ -162,7 +162,7 @@ registerSuite({
 					[Symbol.iterator]() {
 						return {
 							index: 0,
-							next() {
+							next(this: any) {
 								return this.index < 5 ? { value: this.index++, done: false } : { done: true, value: undefined };
 							}
 						};
@@ -201,7 +201,7 @@ registerSuite({
 		'with optional map function and this argument': function () {
 			let thing = {
 				count: 0,
-				mapFunction: function () {
+				mapFunction: function (this: any) {
 					return this.count++;
 				}
 			};
@@ -328,7 +328,7 @@ registerSuite({
 
 			'callback with this argument': function () {
 				let thing = {
-					callback: function (value: number) {
+					callback: function (this: any, value: number) {
 						return this.needle === value;
 					},
 					needle: 3

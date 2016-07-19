@@ -77,7 +77,7 @@ function normalizeOffset(value: number, length: number): number {
  * the functionality is required or not.
  */
 export namespace Shim {
-	export function from(arrayLike: Iterable<any> | ArrayLike<any>, mapFunction?: MapCallback<any, any>, thisArg?: any): Array<any> {
+	export function from(this: any, arrayLike: Iterable<any> | ArrayLike<any>, mapFunction?: MapCallback<any, any>, thisArg?: any): Array<any> {
 		if (arrayLike == null) {
 			throw new TypeError('from: requires an array-like object');
 		}
