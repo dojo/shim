@@ -322,7 +322,7 @@ registerSuite({
 
 			'callback is missing: throws': function () {
 				assert.throws(function () {
-					array.findIndex([], undefined);
+					array.findIndex([], <any> undefined);
 				});
 			},
 
