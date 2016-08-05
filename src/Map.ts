@@ -183,7 +183,7 @@ export default class Map<K, V> {
 	/* istanbul ignore next */
 	forEach(callback: (value: V, key: K, mapInstance: Map<K, V>) => any, context?: {}): void { throw new Error('Abstract method'); };
 	/* istanbul ignore next */
-	get(key: K): V { throw new Error('Abstract method'); };
+	get(key: K): V | undefined { throw new Error('Abstract method'); };
 	/* istanbul ignore next */
 	has(key: K): boolean { throw new Error('Abstract method'); };
 	/* istanbul ignore next */
