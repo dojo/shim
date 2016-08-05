@@ -125,7 +125,7 @@ export namespace Shim {
 	/* Decorate the InternalSymbol object */
 	defineProperties(InternalSymbol.prototype, {
 		constructor: getValueDescriptor(Symbol),
-		toString: getValueDescriptor(function (this: any) { return this.__name__; }, false, false)
+		toString: getValueDescriptor(function (this: { __name__: string }) { return this.__name__; }, false, false)
 	});
 
 	/* Decorate the Symbol.prototype */
