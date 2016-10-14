@@ -9,7 +9,7 @@ export const environments = [
 	/* Issues with SauceLabs and Safari ;-( */
 	// { browserName: 'safari', version: '9', platform: 'OS X 10.11' },
 	{ browserName: 'android', deviceName: 'Google Nexus 7 HD Emulator' },
-	{ browserName: 'iphone', version: '7.1' }
+	{ browserName: 'iphone', version: '9.3' }
 ];
 
 /* SauceLabs supports more max concurrency */
