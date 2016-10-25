@@ -300,6 +300,7 @@ export default class Promise<T> implements Thenable<T> {
 	 * The executor must call either the passed `resolve` function when the asynchronous operation has completed
 	 * successfully, or the `reject` function when the operation fails.
 	 */
+	/* istanbul ignore next */
 	constructor(executor: Executor<T>) {
 	}
 
@@ -323,7 +324,8 @@ export default class Promise<T> implements Thenable<T> {
 	 *     value.bar === 'bar'; // true
 	 * });
 	 */
-	public static all<T>(iterable: Iterable<(T | Thenable<T>)> | (T | Thenable<T>)[]): Promise<T[]> {
+	/* istanbul ignore next */
+	static all<T>(iterable: Iterable<(T | Thenable<T>)> | (T | Thenable<T>)[]): Promise<T[]> {
 		throw new Error();
 	};
 
@@ -345,36 +347,41 @@ export default class Promise<T> implements Thenable<T> {
 	 *     value === 'foo'; // true
 	 * });
 	 */
-	public static race<T>(iterable: Iterable<(T | Thenable<T>)> |  (T | Thenable<T>)[]): Promise<T> {
+	/* istanbul ignore next */
+	static race<T>(iterable: Iterable<(T | Thenable<T>)> |  (T | Thenable<T>)[]): Promise<T> {
 		throw new Error();
 	}
 
 	/**
 	 * Creates a new promise that is rejected with the given error.
 	 */
-	public static reject<T>(reason?: Error): Promise<any> {
+	/* istanbul ignore next */
+	static reject<T>(reason?: Error): Promise<any> {
 		throw new Error();
 	}
 
 	/**
 	 * Creates a new promise that is resolved with the given value.
 	 */
-	public static resolve(): Promise<void>;
-	public static resolve<T>(value: (T | Thenable<T>)): Promise<T>;
-	public static resolve<T>(value?: any): Promise<T> {
+	/* istanbul ignore next */
+	static resolve(): Promise<void>;
+	static resolve<T>(value: (T | Thenable<T>)): Promise<T>;
+	static resolve<T>(value?: any): Promise<T> {
 		throw new Error();
 	}
 
 	/**
 	 * Adds a callback to the promise to be invoked when the asynchronous operation throws an error.
 	 */
-	public catch<U>(onRejected: (reason: Error) => (U | Thenable<U>)): Promise<U>;
-	public catch<U>(onRejected: (reason: Error) => void): Promise<U> {
+	/* istanbul ignore next */
+	catch<U>(onRejected: (reason: Error) => (U | Thenable<U>)): Promise<U>;
+	catch<U>(onRejected: (reason: Error) => void): Promise<U> {
 		throw new Error();
 	}
 
-	public then<U>(onFulfilled?: ((value: T) => (U | Thenable<U> | null | undefined)) | null | undefined, onRejected?: (reason: Error) => void): Promise<U>;
-	public then<U>(onFulfilled?: ((value: T) => (U | Thenable<U> | null | undefined)) | null | undefined, onRejected?: (reason: Error) => (U | Thenable<U>)): Promise<U> {
+	/* istanbul ignore next */
+	then<U>(onFulfilled?: ((value: T) => (U | Thenable<U> | null | undefined)) | null | undefined, onRejected?: (reason: Error) => void): Promise<U>;
+	then<U>(onFulfilled?: ((value: T) => (U | Thenable<U> | null | undefined)) | null | undefined, onRejected?: (reason: Error) => (U | Thenable<U>)): Promise<U> {
 		throw new Error();
 	}
 }
