@@ -18,15 +18,6 @@ export interface Executor<T> {
 	(resolve: (value?: T | Thenable<T>) => void, reject: (reason?: any) => void): void;
 }
 
-/**
- * Returns true if a given value has a `then` method.
- * @param {any} value The value to check if is Thenable
- * @returns {is Thenable<T>} A type guard if the value is thenable
- */
-export function isThenable<T>(value: any): value is Thenable<T> {
-	return value && typeof value.then === 'function';
-}
-
 module Shim {
 
 	/**
@@ -363,9 +354,9 @@ export default class Promise<T> implements Thenable<T> {
 	/**
 	 * Creates a new promise that is resolved with the given value.
 	 */
-	/* istanbul ignore next */
 	static resolve(): Promise<void>;
 	static resolve<T>(value: (T | Thenable<T>)): Promise<T>;
+	/* istanbul ignore next */
 	static resolve<T>(value?: any): Promise<T> {
 		throw new Error();
 	}
@@ -373,14 +364,14 @@ export default class Promise<T> implements Thenable<T> {
 	/**
 	 * Adds a callback to the promise to be invoked when the asynchronous operation throws an error.
 	 */
-	/* istanbul ignore next */
 	catch<U>(onRejected: (reason: Error) => (U | Thenable<U>)): Promise<U>;
+	/* istanbul ignore next */
 	catch<U>(onRejected: (reason: Error) => void): Promise<U> {
 		throw new Error();
 	}
 
-	/* istanbul ignore next */
 	then<U>(onFulfilled?: ((value: T) => (U | Thenable<U> | null | undefined)) | null | undefined, onRejected?: (reason: Error) => void): Promise<U>;
+	/* istanbul ignore next */
 	then<U>(onFulfilled?: ((value: T) => (U | Thenable<U> | null | undefined)) | null | undefined, onRejected?: (reason: Error) => (U | Thenable<U>)): Promise<U> {
 		throw new Error();
 	}
