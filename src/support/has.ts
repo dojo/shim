@@ -74,6 +74,7 @@ add('es6-map', function () {
 				typeof map.values === 'function' && typeof map.entries === 'function';
 		}
 		catch (e) {
+			/* istanbul ignore next: not testing on iOS at the moment */
 			return false;
 		}
 	}
