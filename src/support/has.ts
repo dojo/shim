@@ -88,6 +88,7 @@ add('es6-weakmap', function () {
 		const key1 = {};
 		const key2 = {};
 		const map = new global.WeakMap([ [ key1, 1 ] ]);
+		Object.freeze(key1);
 		return map.get(key1) === 1 && map.set(key2, 2) === map;
 	}
 	return false;
