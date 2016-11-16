@@ -13,7 +13,9 @@ export * from 'dojo-has/has';
  * Map, etc in the global namespace. If the polyfill's Symbol is not compatible with our Symbol, neither
  * will be anything that uses their iterator symbol, like Map, Set, etc.
  */
-const hasSymbol = typeof global.Symbol !== 'undefined' && typeof Symbol() === 'symbol';
+
+/* Symbol */
+add('es6-symbol', typeof global.Symbol !== 'undefined' && typeof Symbol() === 'symbol');
 
 /* Object */
 add('es6-object-assign', typeof (<any> Object).assign === 'function');
@@ -72,14 +74,14 @@ add('es6-math-imul', () => {
 });
 
 /* Promise */
-add('es6-promise', typeof global.Promise !== 'undefined' && hasSymbol);
+add('es6-promise', typeof global.Promise !== 'undefined' && has('es6-symbol'));
 
 /* Set */
 add('es6-set', () => {
 	if (typeof global.Set === 'function') {
 		/* IE11 and older versions of Safari are missing critical ES6 Set functionality */
 		const set = new global.Set([1]);
-		return set.has(1) && 'keys' in set && typeof set.keys === 'function' && hasSymbol;
+		return set.has(1) && 'keys' in set && typeof set.keys === 'function' && has('es6-symbol');
 	}
 	return false;
 });
@@ -96,7 +98,7 @@ add('es6-map', function () {
 			const map = new global.Map([ [0, 1] ]);
 
 			return map.has(0) &&
-				typeof map.keys === 'function' && hasSymbol &&
+				typeof map.keys === 'function' && has('es6-symbol') &&
 				typeof map.values === 'function' &&
 				typeof map.entries === 'function';
 		}
@@ -116,13 +118,10 @@ add('es6-weakmap', function () {
 		const key2 = {};
 		const map = new global.WeakMap([ [ key1, 1 ] ]);
 		Object.freeze(key1);
-		return map.get(key1) === 1 && map.set(key2, 2) === map && hasSymbol;
+		return map.get(key1) === 1 && map.set(key2, 2) === map && has('es6-symbol');
 	}
 	return false;
 });
-
-/* Symbol */
-add('es6-symbol', hasSymbol);
 
 /* Miscellaneous features */
 
