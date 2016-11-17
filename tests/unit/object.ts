@@ -150,14 +150,14 @@ registerSuite({
 
 		let keys = object.getOwnPropertyDescriptors(obj);
 
-		assert.deepEqual(Object.keys(keys), [
+		assert.sameMembers(Object.keys(keys), [
 			'prop1',
 			'prop2',
 			'prop3',
 			'hidden'
 		]);
 
-		assert.deepEqual(object.getOwnPropertySymbols(obj), [
+		assert.sameMembers(object.getOwnPropertySymbols(obj), [
 			visibleSymbol,
 			hiddenSymbol
 		]);
