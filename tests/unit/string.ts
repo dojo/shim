@@ -347,5 +347,79 @@ registerSuite({
 			assert.isTrue(stringUtil.startsWith('\xA2fa\uDA04', 'fa\uDA04', 1));
 			assert.isTrue(stringUtil.startsWith('\xA2fa\uDA04', '\uDA04', 3));
 		}
+	},
+
+	'.padEnd()': {
+		'null/undefined string'() {
+			assert.throws(() => {
+				stringUtil.padEnd(<any> null, 12);
+			});
+
+			assert.throws(() => {
+				stringUtil.padEnd(<any> undefined, 12);
+			});
+		},
+
+		'null/undefined/invalid length'() {
+			assert.throws(() => {
+				stringUtil.padEnd('', <any> null);
+			});
+
+			assert.throws(() => {
+				stringUtil.padEnd('', <any> undefined);
+			});
+
+			assert.throws(() => {
+				stringUtil.padEnd('', -1);
+			});
+
+			assert.throws(() => {
+				stringUtil.padEnd('', Infinity);
+			});
+		},
+
+		'padEnd()'() {
+			assert.equal(stringUtil.padEnd('', 10), '          ');
+			assert.equal(stringUtil.padEnd('test', 5), 'test ');
+			assert.equal(stringUtil.padEnd('test', 10, 'test'), 'testtestte');
+			assert.equal(stringUtil.padEnd('test', 3, 'padding'), 'test');
+		}
+	},
+
+	'.padStart()': {
+		'null/undefined string'() {
+			assert.throws(() => {
+				stringUtil.padStart(<any> null, 12);
+			});
+
+			assert.throws(() => {
+				stringUtil.padStart(<any> undefined, 12);
+			});
+		},
+
+		'null/undefined/invalid length'() {
+			assert.throws(() => {
+				stringUtil.padStart('', <any> null);
+			});
+
+			assert.throws(() => {
+				stringUtil.padStart('', <any> undefined);
+			});
+
+			assert.throws(() => {
+				stringUtil.padStart('', -1);
+			});
+
+			assert.throws(() => {
+				stringUtil.padStart('', Infinity);
+			});
+		},
+
+		'padStart()'() {
+			assert.equal(stringUtil.padStart('', 10), '          ');
+			assert.equal(stringUtil.padStart('test', 5), ' test');
+			assert.equal(stringUtil.padStart('test', 10, 'test'), 'testtetest');
+			assert.equal(stringUtil.padStart('test', 3, 'padding'), 'test');
+		}
 	}
 });
