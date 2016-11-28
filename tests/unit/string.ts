@@ -361,17 +361,9 @@ registerSuite({
 		},
 
 		'null/undefined/invalid length'() {
-			assert.throws(() => {
-				stringUtil.padEnd('', <any> null);
-			});
-
-			assert.throws(() => {
-				stringUtil.padEnd('', <any> undefined);
-			});
-
-			assert.throws(() => {
-				stringUtil.padEnd('', -1);
-			});
+			assert.equal(stringUtil.padEnd('test', <any> null), 'test');
+			assert.equal(stringUtil.padEnd('test', <any> undefined), 'test');
+			assert.equal(stringUtil.padEnd('test', -1), 'test');
 
 			assert.throws(() => {
 				stringUtil.padEnd('', Infinity);
@@ -398,17 +390,9 @@ registerSuite({
 		},
 
 		'null/undefined/invalid length'() {
-			assert.throws(() => {
-				stringUtil.padStart('', <any> null);
-			});
-
-			assert.throws(() => {
-				stringUtil.padStart('', <any> undefined);
-			});
-
-			assert.throws(() => {
-				stringUtil.padStart('', -1);
-			});
+			assert.equal(stringUtil.padStart('test', <any> null), 'test');
+			assert.equal(stringUtil.padStart('test', <any> undefined), 'test');
+			assert.equal(stringUtil.padStart('test', -1), 'test');
 
 			assert.throws(() => {
 				stringUtil.padStart('', Infinity);

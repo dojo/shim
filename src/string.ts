@@ -190,8 +190,12 @@ export namespace Shim {
 			throw new TypeError('string.repeat requires a valid string.');
 		}
 
-		if (maxLength === null || maxLength === undefined || maxLength < 0 || maxLength === Infinity) {
+		if (maxLength === Infinity) {
 			throw new RangeError('string.padEnd requires a non-negative finite count.');
+		}
+
+		if (maxLength === null || maxLength === undefined || maxLength < 0) {
+			maxLength = 0;
 		}
 
 		let strText = String(text);
@@ -209,8 +213,12 @@ export namespace Shim {
 			throw new TypeError('string.repeat requires a valid string.');
 		}
 
-		if (maxLength === null || maxLength === undefined || maxLength < 0 || maxLength === Infinity) {
-			throw new RangeError('string.padEnd requires a non-negative finite count.');
+		if (maxLength === Infinity) {
+			throw new RangeError('string.padStart requires a non-negative finite count.');
+		}
+
+		if (maxLength === null || maxLength === undefined || maxLength < 0) {
+			maxLength = 0;
 		}
 
 		let strText = String(text);
