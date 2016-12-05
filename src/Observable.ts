@@ -1,7 +1,6 @@
-import { Iterable, forOf } from './iterator';
+import { Iterable, forOf, isIterable, isArrayLike } from './iterator';
 import { hasClass } from './support/decorators';
 import global from './support/global';
-import { queueMicroTask } from './support/queue';
 import './Symbol';
 
 /**
@@ -28,20 +27,20 @@ export interface Observer<T> {
 	 *
 	 * @param {T} value    The value that was emitted.
 	 */
-	next(value: T): void;
+	next?(value: T): any;
 
 	/**
 	 * An optional method to be called when the subscription starts (before any events are emitted).
 	 * @param observer
 	 */
-	start?(observer: SubscriptionObserver<T>): void;
+	start?(observer: Subscription): void;
 
 	/**
 	 * An optional method to be called if an error occurs during subscription or handling.
 	 *
 	 * @param errorValue    The error
 	 */
-	error?(errorValue: any): void;
+	error?(errorValue: any): any;
 
 	/**
 	 * An optional method to be called when the subscription is completed (unless an error occurred and the error method was specified)
@@ -65,14 +64,14 @@ export interface SubscriptionObserver<T> {
 	 *
 	 * @param value    The value to be emitted.
 	 */
-	next(value: T): void;
+	next(value: T): any;
 
 	/**
 	 * Report an error. The subscription will be closed after an error has occurred.
 	 *
 	 * @param errorValue    The error to be reported.
 	 */
-	error(errorValue: any): void;
+	error(errorValue: any): any;
 
 	/**
 	 * Report completion of the subscription. The subscription will be closed, and no new values will be emitted,
@@ -84,7 +83,7 @@ export interface SubscriptionObserver<T> {
 }
 
 export interface Subscriber<T> {
-	(observer: SubscriptionObserver<T>): (() => void) | void;
+	(observer: SubscriptionObserver<T>): (() => void) | void | { unsubscribe: () => void };
 }
 
 /**
@@ -94,108 +93,204 @@ export interface ObservableObject {
 	[Symbol.observable]: () => any;
 }
 
-/**
- * Determine if an object is Observable
- * @param item    The item to check
- *
- * @return {boolean}    true if the item is Observable
- */
-export function isObservable(item: any): item is ObservableObject {
-	return item && typeof item[ Symbol.observable ] === 'function';
-}
-
 namespace Shim {
-	export class ShimSubscriptionObserver<T> implements SubscriptionObserver<T> {
-		private _closed: boolean;
-		private _observer: Observer<T>;
-		private _closer: any;
+	/*
+	 * Decorator to mark a single method/property as non-enumerable. ES spec requires pretty much every
+	 * method or property in Subscription, Observable, and SubscriptionObserver to be non-enumerable.
+	 */
+	function nonEnumerable(target: any, key: string | symbol, descriptor: PropertyDescriptor) {
+		descriptor.enumerable = false;
+	}
 
-		constructor(observer: Observer<T>) {
-			this._observer = observer;
-			this._closer = null;
-		}
+	/*
+	 * Create a subscription observer for a given observer, and return the subscription.  The "logic" for Observerables
+	 * is in here!
+	 */
+	function startSubscription<T>(executor: Subscriber<T>, observer: Observer<T>): Subscription {
+		let closed = false;
+		let cleanUp: any;
 
-		get closed() {
-			return this._closed;
-		}
+		function unsubscribe() {
+			if (!closed) {
+				closed = true;
 
-		start(executor: Subscriber<T>) {
-			if (this._observer.start) {
-				this._observer.start(this);
-			}
-
-			try {
-				this._closer = executor(this);
-			}
-			catch (e) {
-				this.error(e);
-				return;
-			}
-		}
-
-		next(value: T): void {
-			if (this.closed) {
-				return;
-			}
-
-			try {
-				this._observer.next(value);
-			}
-			catch (e) {
-				this.error(e);
-			}
-		}
-
-		unsubscribe() {
-			this._closed = true;
-			if (this._closer) {
-				this._closer();
-			}
-		}
-
-		complete(completeValue?: any) {
-			if (!this._closed) {
-				this._closed = true;
-
-				this.unsubscribe();
-
-				if (this._observer.complete) {
-					this._observer.complete(completeValue);
+				if (cleanUp) {
+					cleanUp();
 				}
 			}
 		}
 
-		error(errorValue?: any) {
-			this.unsubscribe();
-
-			if (this._observer.error) {
-				this._observer.error(errorValue);
-			} else if (this._observer.complete) {
-				this._observer.complete(errorValue);
+		function start(subscriptionObserver: SubscriptionObserver<T>) {
+			if (observer.start) {
+				observer.start(subscription);
 			}
-			else {
+
+			if (closed) {
+				return;
+			}
+
+			try {
+				const result: any = executor(subscriptionObserver);
+
+				if (typeof result === 'function') {
+					cleanUp = result;
+				}
+				else if (result && 'unsubscribe' in result) {
+					cleanUp = result.unsubscribe;
+				}
+				else if (result !== undefined && result !== null) {
+					throw new TypeError('Subscriber must return a callable or subscription');
+				}
+
+				if (closed) {
+					if (cleanUp) {
+						cleanUp();
+					}
+				}
+			}
+			catch (e) {
+				error(e);
+			}
+		}
+
+		function next(value: T): any {
+			if (closed) {
+				return;
+			}
+
+			const next = observer.next;
+
+			try {
+				if (typeof next === 'function') {
+					return next(value);
+				} else if (next !== undefined && next !== null) {
+					throw new TypeError('Observer.next is not a function');
+				}
+			}
+			catch (e) {
+				error(e);
+			}
+		}
+
+		function error(errorValue?: any): any {
+			if (!closed) {
+				let cleanUpError: Error | undefined = undefined;
+
+				try {
+					unsubscribe();
+				} catch (e) {
+					cleanUpError = e;
+				}
+
+				const observerError = observer.error;
+
+				if (observerError !== undefined && observerError !== null) {
+					if (typeof observerError === 'function') {
+						const errorResult = observerError(errorValue);
+
+						if (cleanUpError !== undefined) {
+							throw cleanUpError;
+						}
+
+						return errorResult;
+					} else {
+						throw new TypeError('Observer.error is not a function');
+					}
+				} else if (observer.complete) {
+					return observer.complete(errorValue);
+				} else {
+					throw errorValue;
+				}
+			} else {
 				throw errorValue;
 			}
 		}
 
-		get subscription(): Subscription {
-			const self = this;
+		function complete(completeValue?: any): any {
+			if (!closed) {
+				let cleanUpError: Error | undefined = undefined;
 
-			return {
-				get closed() {
-					return self.closed;
-				},
-
-				unsubscribe() {
-					self.unsubscribe();
+				try {
+					unsubscribe();
+				} catch (e) {
+					cleanUpError = e;
 				}
-			};
+
+				const observerComplete = observer.complete;
+
+				if (observerComplete !== undefined && observerComplete !== null) {
+					if (typeof observerComplete === 'function') {
+						const completeResult = observerComplete(completeValue);
+
+						if (cleanUpError !== undefined) {
+							throw cleanUpError;
+						}
+
+						return completeResult;
+					} else {
+						throw new TypeError('Observer.complete is not a function');
+					}
+				} else if (cleanUpError) {
+					throw cleanUpError;
+				}
+			}
 		}
+
+		const subscription = Object.create(Object.create({}, {
+			'closed': {
+				enumerable: false,
+				configurable: true,
+				get() {
+					return closed;
+				}
+			},
+			'unsubscribe': {
+				enumerable: false,
+				configurable: true,
+				writable: true,
+				value: unsubscribe
+			}
+		}));
+
+		const prototype = Object.create({}, {
+			'next': {
+				enumerable: false,
+				writable: true,
+				value: next,
+				configurable: true
+			},
+			'error': {
+				enumerable: false,
+				writable: true,
+				value: error,
+				configurable: true
+			},
+			'complete': {
+				enumerable: false,
+				writable: true,
+				value: complete,
+				configurable: true
+			},
+			'closed': {
+				enumerable: false,
+				configurable: true,
+				get() {
+					return closed;
+				}
+			}
+		});
+
+		// create the SubscriptionObserver and kick things off
+		start(<SubscriptionObserver<T>> Object.create(prototype));
+
+		// the ONLY way to control the SubscriptionObserver is with the subscription or from a subscriber
+		return subscription;
 	}
 
 	export class ShimObservable<T> implements Observable<T> {
 		private _executor: Subscriber<T>;
 
+		@nonEnumerable
 		[Symbol.observable](): Observable<T> {
 			return this;
 		}
@@ -208,36 +303,49 @@ namespace Shim {
 			this._executor = subscriber;
 		}
 
-		subscribe(onNext: (value: T) => void, onError?: (error: any) => void, onComplete?: () => void): Subscription;
+		subscribe(onNext: (value: T) => any, onError?: (error: any) => any, onComplete?: (value: any) => void): Subscription;
 		subscribe(observer: Observer<T>): Subscription;
-		subscribe(observerOrNext: any, onError?: (error: any) => void, onComplete?: () => void): Subscription {
-			let observer: Observer<T> = <Observer<T>> observerOrNext;
+		subscribe(observerOrNext: any, onError?: (error: any) => any, onComplete?: (value: any) => void): Subscription;
+		@nonEnumerable
+		subscribe(observerOrNext: any, ...listeners: any[]) {
+			const [ onError, onComplete ] = [ ...listeners ];
 
-			if (!observerOrNext) {
+			if (!observerOrNext || typeof observerOrNext === 'number' || typeof observerOrNext === 'string' || typeof observerOrNext === 'boolean') {
 				throw new TypeError('parameter must be a function or an observer');
 			}
 
+			let observer: Observer<T>;
+
 			if (typeof observerOrNext === 'function') {
 				observer = {
-					next: observerOrNext,
-					error: onError,
-					complete: onComplete
+					next: observerOrNext
 				};
-			} else if (!observer.next && !observer.error && !observer.start && !observer.complete) {
-				throw new TypeError('observer must implement at least next, error, start, or complete handler');
+
+				if (typeof onError === 'function') {
+					observer.error = onError;
+				}
+
+				if (typeof onComplete === 'function') {
+					observer.complete = onComplete;
+				}
+			} else {
+				observer = observerOrNext;
 			}
 
-			const subscriptionObserver = new ShimSubscriptionObserver(observer);
-
-			queueMicroTask(() => {
-				subscriptionObserver.start(this._executor);
-			});
-
-			return subscriptionObserver.subscription;
+			return startSubscription(this._executor, observer);
 		}
 
+		@nonEnumerable
 		static of<U>(...items: U[]): ShimObservable<U> {
-			return new this((observer: SubscriptionObserver<U>) => {
+			let constructor: any;
+
+			if (typeof this !== 'function') {
+				constructor = ShimObservable;
+			} else {
+				constructor = this;
+			}
+
+			return new constructor((observer: SubscriptionObserver<U>) => {
 				forOf(items, (o: any) => {
 					observer.next(o);
 				});
@@ -245,23 +353,54 @@ namespace Shim {
 			});
 		}
 
+		@nonEnumerable
 		static from<U>(item: Iterable<U> | ArrayLike<U> | Observable<U>): ShimObservable<U> {
-			if (isObservable(item)) {
-				const result: any = item[ Symbol.observable ]();
+			if (item === null || item === undefined) {
+				throw new TypeError('item cannot be null or undefined');
+			}
 
-				if (result instanceof ShimObservable) {
+			let constructor: any;
+
+			if (typeof this !== 'function') {
+				constructor = ShimObservable;
+			} else {
+				constructor = this;
+			}
+
+			const observableSymbol = (<Observable<U>> item)[ Symbol.observable ];
+
+			if (observableSymbol !== undefined) {
+				if (typeof observableSymbol !== 'function') {
+					throw new TypeError('Symbol.observable must be a function');
+				}
+
+				const result: any = observableSymbol.call(item);
+
+				if (result === undefined || result === null || typeof result === 'number' || typeof result === 'boolean' || typeof result === 'string') {
+					throw new TypeError('Return value of Symbol.observable must be object');
+				}
+
+				if (result.constructor && result.constructor === this || result instanceof ShimObservable) {
 					return result;
+				} else if (result.subscribe) {
+					return new constructor(result.subscribe);
 				} else {
-					return this.of<U>(result);
+					if (constructor.of) {
+						return constructor.of(result);
+					} else {
+						return ShimObservable.of(result);
+					}
 				}
 			}
-			else {
-				return new this((observer: SubscriptionObserver<U>) => {
+			else if (isIterable(item) || isArrayLike(item)) {
+				return new constructor((observer: SubscriptionObserver<U>) => {
 					forOf(item, (o: any) => {
 						observer.next(o);
 					});
 					observer.complete();
 				});
+			} else {
+				throw new TypeError('Parameter is neither Observable nor Iterable');
 			}
 		}
 	}
@@ -308,9 +447,9 @@ export default class Observable<T> implements ObservableObject {
 	 *
 	 * @return {Subscription} A Subscription object that can be used to manage the subscription.
 	 */
-	subscribe(onNext: (value: T) => void, onError?: (error: any) => void, onComplete?: () => void): Subscription;
+	subscribe(onNext: (value: T) => any, onError?: (error: any) => any, onComplete?: (completeValue?: any) => void): Subscription;
 	/* istanbul ignore next */
-	subscribe(observerOrNext: any, onError?: (error: any) => void, onComplete?: () => void): Subscription {
+	subscribe(observerOrNext: any, onError?: (error: any) => any, onComplete?: (compleeValue?: any) => void): Subscription {
 		throw new Error();
 	}
 
