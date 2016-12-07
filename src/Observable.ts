@@ -19,6 +19,14 @@ export interface Subscription {
 }
 
 /**
+ * Describes an object that can be subscribed to
+ */
+export interface Subscribable<T> {
+	subscribe(observer: Observer<T>): Subscription;
+	subscribe(onNext: (value: T) => any, onError?: (error: any) => any, onComplete?: (completeValue?: any) => void): Subscription;
+}
+
+/**
  * Handles events emitted from the subscription
  */
 export interface Observer<T> {
@@ -108,7 +116,7 @@ namespace Shim {
 	 */
 	function startSubscription<T>(executor: Subscriber<T>, observer: Observer<T>): Subscription {
 		let closed = false;
-		let cleanUp: any;
+		let cleanUp: () => void | undefined;
 
 		function unsubscribe() {
 			if (!closed) {
@@ -163,7 +171,8 @@ namespace Shim {
 			try {
 				if (typeof next === 'function') {
 					return next(value);
-				} else if (next !== undefined && next !== null) {
+				}
+				else if (next !== undefined && next !== null) {
 					throw new TypeError('Observer.next is not a function');
 				}
 			}
@@ -178,7 +187,8 @@ namespace Shim {
 
 				try {
 					unsubscribe();
-				} catch (e) {
+				}
+				catch (e) {
 					cleanUpError = e;
 				}
 
@@ -193,15 +203,19 @@ namespace Shim {
 						}
 
 						return errorResult;
-					} else {
+					}
+					else {
 						throw new TypeError('Observer.error is not a function');
 					}
-				} else if (observer.complete) {
+				}
+				else if (observer.complete) {
 					return observer.complete(errorValue);
-				} else {
+				}
+				else {
 					throw errorValue;
 				}
-			} else {
+			}
+			else {
 				throw errorValue;
 			}
 		}
@@ -212,7 +226,8 @@ namespace Shim {
 
 				try {
 					unsubscribe();
-				} catch (e) {
+				}
+				catch (e) {
 					cleanUpError = e;
 				}
 
@@ -227,10 +242,12 @@ namespace Shim {
 						}
 
 						return completeResult;
-					} else {
+					}
+					else {
 						throw new TypeError('Observer.complete is not a function');
 					}
-				} else if (cleanUpError) {
+				}
+				else if (cleanUpError) {
 					throw cleanUpError;
 				}
 			}
@@ -328,7 +345,8 @@ namespace Shim {
 				if (typeof onComplete === 'function') {
 					observer.complete = onComplete;
 				}
-			} else {
+			}
+			else {
 				observer = observerOrNext;
 			}
 
@@ -341,7 +359,8 @@ namespace Shim {
 
 			if (typeof this !== 'function') {
 				constructor = ShimObservable;
-			} else {
+			}
+			else {
 				constructor = this;
 			}
 
@@ -363,7 +382,8 @@ namespace Shim {
 
 			if (typeof this !== 'function') {
 				constructor = ShimObservable;
-			} else {
+			}
+			else {
 				constructor = this;
 			}
 
@@ -382,12 +402,15 @@ namespace Shim {
 
 				if (result.constructor && result.constructor === this || result instanceof ShimObservable) {
 					return result;
-				} else if (result.subscribe) {
+				}
+				else if (result.subscribe) {
 					return new constructor(result.subscribe);
-				} else {
+				}
+				else {
 					if (constructor.of) {
 						return constructor.of(result);
-					} else {
+					}
+					else {
 						return ShimObservable.of(result);
 					}
 				}
@@ -399,7 +422,8 @@ namespace Shim {
 					});
 					observer.complete();
 				});
-			} else {
+			}
+			else {
 				throw new TypeError('Parameter is neither Observable nor Iterable');
 			}
 		}
