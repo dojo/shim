@@ -10,8 +10,8 @@ You can create a promise using the constructor:
 
 ```typescript
 const p = new Promise((resolve, reject) => {
-  // some long running task
-  resolve();
+	// some long running task
+	resolve();
 });
 ```
 
@@ -22,23 +22,22 @@ const resolvePromise = Promise.resolve();
 const rejectedPromise = Promise.reject();
 ```
 
-Values can be wrapped in a resolved promise to facilitate things
-like simple caching:
+Values can be wrapped in a resolved promise to facilitate simple caching:
 
 ```typescript
 function loadData(): Promise<Data> {
-  if (cached) {
-    return Promise.resolve(cachedData);
-  } else {
-    return loadData().then((data) => {
-      cachedData = data;
-      return data;
-    });
-  }
+	if (cached) {
+		return Promise.resolve(cachedData);
+	} else {
+		return loadData().then((data) => {
+			cachedData = data;
+			return data;
+		});
+	}
 }
 
 loadData().then((data) => {
-  // use loaded data
+	// use loaded data
 });
 ```
 
@@ -50,7 +49,7 @@ const task1 = startLongRunningTask();
 const task2 = startLongRunningTask();
 
 Promise.all([task1, task2]).then(() => {
-  // all tasks are completed
+	// all tasks are completed
 });
 
 // Promise.race
@@ -58,13 +57,13 @@ const task1 = startLongRunningTask();
 const task2 = startLongRunningTask();
 
 Promise.race([task1, task2]).then(() => {
-  // either task1 or task2 has completed
+	// either task1 or task2 has completed
 });
 ```
 
 ## Using Promises
 
-You interact with promises using the `then` and `catch` methods.
+Use the `then` and `catch` methods to interact with Promises.
 
 ### Then
 
@@ -72,16 +71,16 @@ You interact with promises using the `then` and `catch` methods.
 
 ```typescript
 const resolvePromise = Promise.resolve(true);
-const rejectedPromise = PRomise.reject(new Error('some error'));
+const rejectedPromise = Promise.reject(new Error('some error'));
 
 resolvedPromise.then((value) => {
-  // value is true
+	// value is true
 });
 
 rejectedPromise.then((value) => {
-  // code is not reached as it is handled by the error handler
+	// code is not reached as it is handled by the error handler
 }, (error) => {
-  // error is 'some error'
+	// error is 'some error'
 });
 ```
 
@@ -91,6 +90,6 @@ The `.catch(errorHandler)` method is a convenience method to just add an error h
 
 ```typescript
 rejectedPromise.catch((error) => {
-  // error is 'some error'
+	// error is 'some error'
 });
 ```

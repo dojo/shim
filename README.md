@@ -107,11 +107,11 @@ The `dojo/shim/number` module provides implementations for several `Number` meth
 The `dojo/shim/object` provides implementations of `Object` methods.
 
 * is
-* getOwnPropertySumbols
+* getOwnPropertySymbols
 * getOwnPropertyNames
 * getOwnPropertyDescriptor
 * values
-* entires
+* entries
 
 ### Observables
 
@@ -127,7 +127,7 @@ The [`@dojo/shim/string`](docs/string.md) module contains `String` methods.
 
 ### Symbols
 
-`@dojo/shim/Symbol` provides an implementation of the [ES2015 Symbol specification](http://www.ecma-international.org/ecma-262/6.0/#sec-symbol-objects) for browsers that do not natively support `Symbol`.
+`@dojo/shim/Symbol` provides an implementation of the [ES2015 Symbol specification](http://www.ecma-international.org/ecma-262/6.0/#sec-symbol-objects) for environments that do not natively support `Symbol`.
 
 ## How do I contribute?
 

@@ -8,28 +8,28 @@ Here we create an Observable that publishes an event every 1 second:
 
 ```typescript
 const timedObservable = new Observable(observer => {
-  let handle = null;
+	let handle = null;
   
-  function timer() {
-    observer.next();
-    handle = setTimeout(timer, 1000);
-  }
+	function timer() {
+		observer.next();
+		handle = setTimeout(timer, 1000);
+	}
   
-  handle = setTimeout(timer, 1000);
+	handle = setTimeout(timer, 1000);
   
-  return () => {
-    clearTimeout(handle);
-  };
+	return () => {
+        clearTimeout(handle);
+	};
 });
 
 let seconds = 0;
 const subscription = timedObservable.subscribe(() => {
-  // 1 second has elapsed
-  seconds++;
+	// 1 second has elapsed
+	seconds++;
   
-  if (seconds >= 5) {
-    subscription.unsubscribe();
-  }
+	if (seconds >= 5) {
+		subscription.unsubscribe();
+	}
 });
 ```
 
@@ -41,10 +41,10 @@ Observables can be created with their constructor:
 
 ```typescript
 new Observable((observer: SubscriptionObserver) => {
-  observer.next(1);
-  observer.next(2);  
-  observer.next(3);
-  observer.complete();
+	observer.next(1);
+	observer.next(2);  
+	observer.next(3);
+	observer.complete();
 });
 ```
 
@@ -57,15 +57,15 @@ The `SubscriptionObserver` can publish values, errors, or signal completion of t
 ```typescript
 // publish two values, then signal completion
 new Observable(observer => {
-  observer.next(1);
-  observer.next(2);
-  observer.complete();
+	observer.next(1);
+	observer.next(2);
+	observer.complete();
 });
 
 // publish a value, then error
 new Observable(observer => {
-  observer.next(1);
-  observer.error(new Error('some error'));
+	observer.next(1);
+	observer.error(new Error('some error'));
 });
 ```
 
@@ -77,7 +77,7 @@ new Observable(observer => {
 // Observable.of
 const obs = Observable.of(1, 2, 3);
 obs.subscribe(value => {
-  console.log(value);
+	console.log(value);
 });
 
 // Outputs:
@@ -94,7 +94,7 @@ obs.subscribe(value => {
 // Observable.from
 const obs = Observable.from(someIterator);
 obs.subscribe(value => {
-  // handle iterator value
+	// handle iterator value
 });
 ```
 
@@ -108,10 +108,10 @@ const subscription = someObservable.subscribe(someSubscriber);
 // ...
 
 if (subscription.closed) {
-  // handle a closed subscription
+	// handle a closed subscription
 } else {
-  // unsubscribe from the subscription
-  subscription.unsubscribe();
+	// unsubscribe from the subscription
+	subscription.unsubscribe();
 }
 ```
 
@@ -122,29 +122,29 @@ The `subscribe` method takes either a list of function handlers or an `Observer`
 ```typescript
 // note that the error handler and completion handler are optional
 someObservable.subscribe((value) => {
-  // next
+	// next
 }, (error) => {
-  // error handler
+	// error handler
 }, (value) => {
-  // completion handler
-})
+	// completion handler
+});
 
 // note that every field is optional
 someObservable.subscribe({
-  completion(value) {
-    // completion handler
-  },
-  
-  error(error) {
-    // error handler
-  },
-  
-  next(value) {
-    // next
-  },
-    
-  start(observer) {
-    // called when the subscription starts, before any events are emitted
-  }
+	completion(value) {
+		// completion handler
+	},
+
+	error(error) {
+		// error handler
+	},
+
+	next(value) {
+		// next
+	},
+
+	start(observer) {
+		// called when the subscription starts, before any events are emitted
+	}
 });
 ```
