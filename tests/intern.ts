@@ -23,8 +23,10 @@ export const environments = [
 	{ browserName: 'edge' },
 	{ browserName: 'firefox', platform: 'WINDOWS' },
 	{ browserName: 'chrome', platform: 'WINDOWS' },
-	{ browserName: 'safari', version: '9.1', platform: 'MAC' },
-	{ browserName: 'iPhone', version: '9.1' }
+	// Issue with iphone 9.1 compatability, commented out for move to
+	// browserstack and issue raised.https://github.com/dojo/shim/issues/96
+	// { browserName: 'iPhone', version: '9.1' },
+	{ browserName: 'safari', version: '9.1', platform: 'MAC' }
 ];
 
 // Maximum number of simultaneous integration tests that should be executed on the remote WebDriver service
