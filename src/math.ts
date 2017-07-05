@@ -179,26 +179,9 @@ if (!has('es6-math')) {
 		return Math.exp(n) - 1;
 	};
 
-	fround = has('float32array')
-		? function (n: number): number {
-			return new Float32Array([n])[0];
-		}
-		: function (n: number): number {
-			// Further fallback for IE9, which doesn't support Float32Array.
-			// This gives a fair approximation in most cases.
-
-			if (n === 0 || !isFinite(n)) {
-				return n;
-			}
-			if (Math.abs(n) > MAX_FLOAT32) {
-				return n > 0 ? Infinity : -Infinity;
-			}
-			if (Math.abs(n) < MIN_FLOAT32) {
-				return 0;
-			}
-			const exponent = Math.floor(log2(Math.abs(n)));
-			return (Math.round((n / Math.pow(2, exponent) - 1) * FRACTION_UNITS) / FRACTION_UNITS + 1) * Math.pow(2, exponent);
-		};
+	fround = function (n: number): number {
+		return new Float32Array([n])[0];
+	};
 
 	hypot = function hypot(...args: number[]): number {
 		// See: http://mzl.la/1HDi6xP

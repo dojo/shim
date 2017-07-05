@@ -148,7 +148,6 @@ add('es6-weakmap', function () {
 
 /* Miscellaneous features */
 
-add('float32array', 'Float32Array' in global);
 add('setimmediate', typeof global.setImmediate !== 'undefined');
 add('postmessage', typeof postMessage === 'function');
 add('microtasks', () => has('es6-promise') || has('host-node') || has('dom-mutationobserver'));
