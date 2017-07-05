@@ -1,5 +1,5 @@
-import { Iterable, forOf, isIterable, isArrayLike } from './iterator';
 import global from './global';
+import { Iterable, forOf, isIterable, isArrayLike } from './iterator';
 import has from './support/has';
 import './Symbol';
 
