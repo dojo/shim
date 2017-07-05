@@ -69,7 +69,7 @@ export interface Set<T> {
 	/** Iterates over values in the set. */
 	[Symbol.iterator](): IterableIterator<T>;
 
-	[Symbol.toStringTag]: 'Set';
+	readonly [Symbol.toStringTag]: 'Set';
 }
 
 export interface SetConstructor {
@@ -99,7 +99,6 @@ export interface SetConstructor {
 	new <T>(iterator: Iterable<T>): Set<T>;
 
 	readonly prototype: Set<any>;
-	[Symbol.species]: SetConstructor;
 }
 
 export let Set: SetConstructor = global.Set;

@@ -6,10 +6,6 @@ import has from './support/has';
 import './Symbol';
 
 export interface Map<K, V> {
-	/** Returns an iterable of entries in the map. */
-	[Symbol.iterator](): IterableIterator<[K, V]>;
-	[Symbol.toStringTag]: 'Map';
-
 	/**
 	 * Deletes all keys and their associated values.
 	 */
@@ -83,6 +79,11 @@ export interface Map<K, V> {
 	 * @return An iterator containing the instance's values.
 	 */
 	values(): IterableIterator<V>;
+
+	/** Returns an iterable of entries in the map. */
+	[Symbol.iterator](): IterableIterator<[K, V]>;
+
+	readonly [Symbol.toStringTag]: 'Map';
 }
 
 export interface MapConstructor {
@@ -119,7 +120,7 @@ export interface MapConstructor {
 
 	readonly prototype: Map<any, any>;
 
-	[Symbol.species]: MapConstructor;
+	readonly [Symbol.species]: MapConstructor;
 }
 
 export let Map: MapConstructor = global.Map;
