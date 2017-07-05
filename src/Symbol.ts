@@ -124,7 +124,6 @@ if (!has('es6-symbol')) {
 
 	defineProperty(InternalSymbol.prototype, Symbol.toPrimitive, getValueDescriptor((<any> Symbol).prototype[Symbol.toPrimitive], false, false, true));
 	defineProperty(InternalSymbol.prototype, Symbol.toStringTag, getValueDescriptor((<any> Symbol).prototype[Symbol.toStringTag], false, false, true));
-	console.log('defined symbol');
 }
 
 /**
