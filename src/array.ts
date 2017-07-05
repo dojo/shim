@@ -1,4 +1,3 @@
-import { ArrayLike } from './interfaces';
 import has from './support/has';
 import { wrapNative } from './support/util';
 import { forOf, isArrayLike, isIterable, Iterable } from './iterator';
@@ -23,6 +22,11 @@ export interface FindCallback<T> {
 	 * @param array The source array
 	 */
 	(element: T, index: number, array: ArrayLike<T>): boolean;
+}
+
+interface WritableArrayLike<T> {
+	readonly length: number;
+	[n: number]: T;
 }
 
 /**
@@ -133,10 +137,10 @@ export namespace Shim {
 
 		while (count > 0) {
 			if (start in target) {
-				target[offset] = target[start];
+				(target as WritableArrayLike<T>)[offset] = target[start];
 			}
 			else {
-				delete target[offset];
+				delete (target as WritableArrayLike<T>)[offset];
 			}
 
 			offset += direction;
@@ -153,7 +157,7 @@ export namespace Shim {
 		end = normalizeOffset(end === undefined ? length : toInteger(end), length);
 
 		while (i < end) {
-			target[i++] = value;
+			(target as WritableArrayLike<T>)[i++] = value;
 		}
 
 		return target;

@@ -1,4 +1,3 @@
-import { ArrayLike } from './interfaces';
 import { HIGH_SURROGATE_MIN, HIGH_SURROGATE_MAX } from './string';
 import './Symbol';
 

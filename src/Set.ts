@@ -1,5 +1,4 @@
 import global from './global';
-import { ArrayLike } from './interfaces';
 import { forOf, IterableIterator, Iterable, ShimIterator } from './iterator';
 import has from './support/has';
 import './Symbol';

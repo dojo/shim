@@ -1,4 +1,3 @@
-import { ArrayLike } from './interfaces';
 import { forOf, Iterable, IterableIterator, ShimIterator } from './iterator';
 import global from './global';
 import { is as objectIs } from './object';

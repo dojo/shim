@@ -1,4 +1,3 @@
-import { ArrayLike } from './interfaces';
 import global from './global';
 import { forOf, Iterable } from './iterator';
 import has from './support/has';
