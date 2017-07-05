@@ -2,57 +2,13 @@ import { ArrayLike } from './interfaces';
 import { forOf, Iterable, IterableIterator, ShimIterator } from './iterator';
 import global from './global';
 import { is as objectIs } from './object';
-import './Symbol';
 import has from './support/has';
-
-export interface MapConstructor {
-	/**
-	 * Creates a new Map
-	 *
-	 * @constructor
-	 */
-	new (): Map<any, any>;
-
-	/**
-	 * Creates a new Map
-	 *
-	 * @constructor
-	 *
-	 * @param iterator
-	 * Array or iterator containing two-item tuples used to initially populate the map.
-	 * The first item in each tuple corresponds to the key of the map entry.
-	 * The second item corresponds to the value of the map entry.
-	 */
-	new <K, V>(iterator?: [K, V][]): Map<K, V>;
-
-	/**
-	 * Creates a new Map
-	 *
-	 * @constructor
-	 *
-	 * @param iterator
-	 * Array or iterator containing two-item tuples used to initially populate the map.
-	 * The first item in each tuple corresponds to the key of the map entry.
-	 * The second item corresponds to the value of the map entry.
-	 */
-	new <K, V>(iterator: Iterable<[K, V]>): Map<K, V>;
-
-	readonly prototype: Map<any, any>;
-
-	[Symbol.species]: MapConstructor;
-}
+import './Symbol';
 
 export interface Map<K, V> {
 	/** Returns an iterable of entries in the map. */
 	[Symbol.iterator](): IterableIterator<[K, V]>;
 	[Symbol.toStringTag]: 'Map';
-
-	/**
-	 * Returns an iterator that yields each key/value pair as an array.
-	 *
-	 * @return An iterator for each key/value pair in the instance.
-	 */
-	entries(): IterableIterator<[K, V]>;
 
 	/**
 	 * Deletes all keys and their associated values.
@@ -66,6 +22,13 @@ export interface Map<K, V> {
 	 * @return true if the key exists, false if it does not
 	 */
 	delete(key: K): boolean;
+
+	/**
+	 * Returns an iterator that yields each key/value pair as an array.
+	 *
+	 * @return An iterator for each key/value pair in the instance.
+	 */
+	entries(): IterableIterator<[K, V]>;
 
 	/**
 	 * Executes a given function for each map entry. The function
@@ -122,6 +85,43 @@ export interface Map<K, V> {
 	values(): IterableIterator<V>;
 }
 
+export interface MapConstructor {
+	/**
+	 * Creates a new Map
+	 *
+	 * @constructor
+	 */
+	new (): Map<any, any>;
+
+	/**
+	 * Creates a new Map
+	 *
+	 * @constructor
+	 *
+	 * @param iterator
+	 * Array or iterator containing two-item tuples used to initially populate the map.
+	 * The first item in each tuple corresponds to the key of the map entry.
+	 * The second item corresponds to the value of the map entry.
+	 */
+	new <K, V>(iterator?: [K, V][]): Map<K, V>;
+
+	/**
+	 * Creates a new Map
+	 *
+	 * @constructor
+	 *
+	 * @param iterator
+	 * Array or iterator containing two-item tuples used to initially populate the map.
+	 * The first item in each tuple corresponds to the key of the map entry.
+	 * The second item corresponds to the value of the map entry.
+	 */
+	new <K, V>(iterator: Iterable<[K, V]>): Map<K, V>;
+
+	readonly prototype: Map<any, any>;
+
+	[Symbol.species]: MapConstructor;
+}
+
 export let Map: MapConstructor = global.Map;
 
 if (!has('es6-map')) {
@@ -175,7 +175,7 @@ if (!has('es6-map')) {
 				return [ key, this._values[i] ];
 			});
 
-			return new ShimIterator<[K, V]>(values);
+			return new ShimIterator(values);
 		}
 
 		forEach(callback: (value: V, key: K, mapInstance: Map<K, V>) => any, context?: {}) {
@@ -196,7 +196,7 @@ if (!has('es6-map')) {
 		}
 
 		keys(): IterableIterator<K> {
-			return new ShimIterator<K>(this._keys);
+			return new ShimIterator(this._keys);
 		}
 
 		set(key: K, value: V): Map<K, V> {
@@ -208,7 +208,7 @@ if (!has('es6-map')) {
 		}
 
 		values(): IterableIterator<V> {
-			return new ShimIterator<V>(this._values);
+			return new ShimIterator(this._values);
 		}
 
 		[Symbol.iterator](): IterableIterator<[K, V]> {
