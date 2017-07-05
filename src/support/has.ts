@@ -65,8 +65,26 @@ add('es6-string-padend', 'padEnd' in global.String.prototype);
 
 /* Math */
 
-add('es6-math-acosh', typeof global.Math.acosh === 'function');
-add('es6-math-clz32', typeof global.Math.clz32 === 'function');
+add('es6-math', () => {
+	return [
+		'clz32',
+		'sign',
+		'log10',
+		'log2',
+		'log1p',
+		'expm1',
+		'cosh',
+		'sinh',
+		'tanh',
+		'acosh',
+		'asinh',
+		'atanh',
+		'trunc',
+		'fround',
+		'cbrt',
+		'hypot'
+	].every((name) => typeof global.Math[name] === 'function');
+});
 add('es6-math-imul', () => {
 	if ('imul' in global.Math) {
 		/* Some versions of Safari on ios do not properly implement this */
