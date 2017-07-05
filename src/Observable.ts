@@ -368,123 +368,134 @@ if (!has('es-observable')) {
 		return subscription;
 	};
 
-	Observable = class Observable<T> {
-		private _executor: Subscriber<T>;
-
-		[Symbol.observable](): this {
-			return this;
+	Observable = (function () {
+		function nonEnumerable(target: any, key: string | symbol, descriptor: PropertyDescriptor) {
+			descriptor.enumerable = false;
 		}
 
-		constructor(subscriber: Subscriber<T>) {
-			if (typeof subscriber !== 'function') {
-				throw new TypeError('subscriber is not a function');
+		class Observable<T> {
+			private _executor: Subscriber<T>;
+
+			@nonEnumerable
+			[Symbol.observable](): this {
+				return this;
 			}
 
-			this._executor = subscriber;
-		}
-
-		subscribe(observerOrNext: any, ...listeners: any[]) {
-			const [ onError, onComplete ] = [ ...listeners ];
-
-			if (!observerOrNext || typeof observerOrNext === 'number' || typeof observerOrNext === 'string' || typeof observerOrNext === 'boolean') {
-				throw new TypeError('parameter must be a function or an observer');
-			}
-
-			let observer: Observer<T>;
-
-			if (typeof observerOrNext === 'function') {
-				observer = {
-					next: observerOrNext
-				};
-
-				if (typeof onError === 'function') {
-					observer.error = onError;
+			constructor(subscriber: Subscriber<T>) {
+				if (typeof subscriber !== 'function') {
+					throw new TypeError('subscriber is not a function');
 				}
 
-				if (typeof onComplete === 'function') {
-					observer.complete = onComplete;
-				}
-			}
-			else {
-				observer = observerOrNext;
+				this._executor = subscriber;
 			}
 
-			return startSubscription(this._executor, observer);
-		}
+			@nonEnumerable
+			subscribe(observerOrNext: any, ...listeners: any[]) {
+				const [ onError, onComplete ] = [ ...listeners ];
 
-		static of<U>(...items: U[]): Observable<U> {
-			let constructor: typeof Observable;
-
-			if (typeof this !== 'function') {
-				constructor = Observable;
-			}
-			else {
-				constructor = this;
-			}
-
-			return new constructor((observer: SubscriptionObserver<U>) => {
-				forOf(items, (o: any) => {
-					observer.next(o);
-				});
-				observer.complete();
-			});
-		}
-
-		static from<U>(item: Iterable<U> | ArrayLike<U> | Observable<U>): Observable<U> {
-			if (item === null || item === undefined) {
-				throw new TypeError('item cannot be null or undefined');
-			}
-
-			let constructor: typeof Observable;
-
-			if (typeof this !== 'function') {
-				constructor = Observable;
-			}
-			else {
-				constructor = this;
-			}
-
-			const observableSymbol = (item as Observable<U>)[ Symbol.observable ];
-
-			if (observableSymbol !== undefined) {
-				if (typeof observableSymbol !== 'function') {
-					throw new TypeError('Symbol.observable must be a function');
+				if (!observerOrNext || typeof observerOrNext === 'number' || typeof observerOrNext === 'string' || typeof observerOrNext === 'boolean') {
+					throw new TypeError('parameter must be a function or an observer');
 				}
 
-				const result: any = observableSymbol.call(item);
+				let observer: Observer<T>;
 
-				if (result === undefined || result === null || typeof result === 'number' || typeof result === 'boolean' || typeof result === 'string') {
-					throw new TypeError('Return value of Symbol.observable must be object');
-				}
+				if (typeof observerOrNext === 'function') {
+					observer = {
+						next: observerOrNext
+					};
 
-				if (result.constructor && result.constructor === this || result instanceof Observable) {
-					return result;
-				}
-				else if (result.subscribe) {
-					return new constructor(result.subscribe);
+					if (typeof onError === 'function') {
+						observer.error = onError;
+					}
+
+					if (typeof onComplete === 'function') {
+						observer.complete = onComplete;
+					}
 				}
 				else {
-					if (constructor.of) {
-						return constructor.of(result);
-					}
-					else {
-						return Observable.of(result);
-					}
+					observer = observerOrNext;
 				}
+
+				return startSubscription(this._executor, observer);
 			}
-			else if (isIterable(item) || isArrayLike(item)) {
+
+			@nonEnumerable
+			static of<U>(...items: U[]): Observable<U> {
+				let constructor: typeof Observable;
+
+				if (typeof this !== 'function') {
+					constructor = Observable;
+				}
+				else {
+					constructor = this;
+				}
+
 				return new constructor((observer: SubscriptionObserver<U>) => {
-					forOf(item, (o: any) => {
+					forOf(items, (o: any) => {
 						observer.next(o);
 					});
 					observer.complete();
 				});
 			}
-			else {
-				throw new TypeError('Parameter is neither Observable nor Iterable');
+
+			@nonEnumerable
+			static from<U>(item: Iterable<U> | ArrayLike<U> | Observable<U>): Observable<U> {
+				if (item === null || item === undefined) {
+					throw new TypeError('item cannot be null or undefined');
+				}
+
+				let constructor: typeof Observable;
+
+				if (typeof this !== 'function') {
+					constructor = Observable;
+				}
+				else {
+					constructor = this;
+				}
+
+				const observableSymbol = (item as Observable<U>)[ Symbol.observable ];
+
+				if (observableSymbol !== undefined) {
+					if (typeof observableSymbol !== 'function') {
+						throw new TypeError('Symbol.observable must be a function');
+					}
+
+					const result: any = observableSymbol.call(item);
+
+					if (result === undefined || result === null || typeof result === 'number' || typeof result === 'boolean' || typeof result === 'string') {
+						throw new TypeError('Return value of Symbol.observable must be object');
+					}
+
+					if (result.constructor && result.constructor === this || result instanceof Observable) {
+						return result;
+					}
+					else if (result.subscribe) {
+						return new constructor(result.subscribe);
+					}
+					else {
+						if (constructor.of) {
+							return constructor.of(result);
+						}
+						else {
+							return Observable.of(result);
+						}
+					}
+				}
+				else if (isIterable(item) || isArrayLike(item)) {
+					return new constructor((observer: SubscriptionObserver<U>) => {
+						forOf(item, (o: any) => {
+							observer.next(o);
+						});
+						observer.complete();
+					});
+				}
+				else {
+					throw new TypeError('Parameter is neither Observable nor Iterable');
+				}
 			}
 		}
-	};
+		return Observable;
+	})();
 }
 
 export default Observable;
