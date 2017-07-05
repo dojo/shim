@@ -1,15 +1,53 @@
+import has from './support/has';
 import { ArrayLike } from './interfaces';
-import { hasClass } from './support/decorators';
 import global from './global';
 import { forOf, Iterable, IterableIterator, ShimIterator } from './iterator';
 import { is as objectIs } from './object';
 import './Symbol';
 
-export namespace Shim {
+export interface MapConstructor {
+	new (): Map<any, any>;
+	new <K, V>(entries?: [K, V][]): Map<K, V>;
+	new <K, V>(iterable: Iterable<[K, V]>): Map<K, V>;
+	readonly prototype: Map<any, any>;
+
+	[Symbol.species]: MapConstructor;
+}
+
+export default interface Map<K, V> {
+	/** Returns an iterable of entries in the map. */
+	[Symbol.iterator](): IterableIterator<[K, V]>;
+	[Symbol.toStringTag]: 'Map';
+
 	/**
-	 * An implementation analogous to the Map specification in ES2015.
+	 * Returns an iterable of key, value pairs for every entry in the map.
 	 */
-	export class Map<K, V> {
+	entries(): IterableIterator<[K, V]>;
+
+	clear(): void;
+	delete(key: K): boolean;
+	forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void;
+	get(key: K): V | undefined;
+
+	/**
+	 * Returns an iterable of keys in the map
+	 */
+	keys(): IterableIterator<K>;
+
+	has(key: K): boolean;
+	set(key: K, value: V): this;
+	readonly size: number;
+
+	/**
+	 * Returns an iterable of values in the map
+	 */
+	values(): IterableIterator<V>;
+}
+
+let ShimMap: MapConstructor;
+
+if (!has('es6-map')) {
+	ShimMap = class Map<K, V> {
 		protected readonly _keys: K[] = [];
 		protected readonly _values: V[] = [];
 
@@ -25,6 +63,8 @@ export namespace Shim {
 			}
 			return -1;
 		}
+
+		static [Symbol.species] = ShimMap;
 
 		/**
 		 * Creates a new Map
@@ -163,37 +203,8 @@ export namespace Shim {
 			return this.entries();
 		}
 
-		[Symbol.toStringTag] = 'Map';
-	}
+		[Symbol.toStringTag]: 'Map' = 'Map';
+	};
 }
 
-@hasClass('es6-map', global.Map, Shim.Map)
-export default class Map<K, V> {
-	/* istanbul ignore next */
-	constructor(iterable?: ArrayLike<[K, V]> | Iterable<[K, V]>) { };
-
-	/* istanbul ignore next */
-	get size(): number { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	clear(): void { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	delete(key: K): boolean { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	entries(): IterableIterator<[K, V]> { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	forEach(callback: (value: V, key: K, mapInstance: Map<K, V>) => any, context?: {}): void { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	get(key: K): V | undefined { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	has(key: K): boolean { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	keys(): IterableIterator<K> { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	set(key: K, value: V): Map<K, V> { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	values(): IterableIterator<V> { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	[Symbol.iterator](): IterableIterator<[K, V]> { throw new Error('Abstract method'); };
-	/* istanbul ignore next */
-	[Symbol.toStringTag] = 'Map';
-}
+export default (has('es6-map') ? global.Map : ShimMap!) as MapConstructor;
