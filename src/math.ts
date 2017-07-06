@@ -1,5 +1,9 @@
 import has from './support/has';
 
+export const FRACTION_UNITS = Math.pow(2, 23);
+export const MAX_FLOAT32 = 3.4028234663852886e+38;
+export const MIN_FLOAT32 = 1.401298464324817e-45;
+
 /**
  * Returns the hyperbolic arccosine of a number.
  *
@@ -138,11 +142,6 @@ export let tanh: (n: number) => number = (<any> Math).tanh;
 export let trunc: (n: number) => number = (<any> Math).trunc;
 
 if (!has('es6-math')) {
-
-	const FRACTION_UNITS = Math.pow(2, 23);
-	const MAX_FLOAT32 = 3.4028234663852886e+38;
-	const MIN_FLOAT32 = 1.401298464324817e-45;
-
 	acosh = function acosh(n: number): number {
 		return Math.log(n + Math.sqrt(n * n - 1));
 	};
