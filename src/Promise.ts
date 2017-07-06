@@ -18,7 +18,7 @@ export interface Executor<T> {
 	(resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void): void;
 }
 
-let ShimPromise: any;
+export let ShimPromise: typeof Promise = global.Promise;
 
 export const isThenable = function isThenable<T>(value: any): value is PromiseLike<T> {
 	return value && typeof value.then === 'function';
@@ -31,7 +31,7 @@ if (!has('es6-promise')) {
 		Rejected
 	}
 
-	ShimPromise = class Promise<T> implements Thenable<T> {
+	global.Promise = ShimPromise = <any> class Promise<T> implements Thenable<T> {
 		static all<T>(iterable: Iterable<(T | PromiseLike<T>)> | (T | PromiseLike<T>)[]): Promise<T[]> {
 			return new this(function (resolve, reject) {
 				const values: T[] = [];
@@ -260,6 +260,4 @@ if (!has('es6-promise')) {
 	};
 }
 
-global.Promise = has('es6-promise') ? global.Promise : ShimPromise;
-
-export default Promise;
+export default ShimPromise;
