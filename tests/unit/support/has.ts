@@ -7,7 +7,8 @@ registerSuite({
 
 	'features defined'() {
 		[
-			'es6-object-assign',
+			'es6-object',
+			'es7-object',
 			'es6-array',
 			'es6-array-fill',
 			'es7-array',

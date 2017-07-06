@@ -18,7 +18,22 @@ export * from '@dojo/has/has';
 add('es6-symbol', typeof global.Symbol !== 'undefined' && typeof Symbol() === 'symbol');
 
 /* Object */
-add('es6-object-assign', typeof (<any> Object).assign === 'function');
+add('es6-object', () => {
+	return has('es6-symbol') && [
+		'assign',
+		'is',
+		'getOwnPropertySymbols',
+		'setPrototypeOf'
+	].every((name) => typeof global.Object[name] === 'function');
+});
+
+add('es7-object', () => {
+	return [
+		'values',
+		'entries',
+		'getOwnPropertyDescriptors'
+	].every((name) => typeof global.Object[name] === 'function');
+});
 
 /* Array */
 add('es6-array', () => {
