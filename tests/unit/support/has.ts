@@ -8,13 +8,9 @@ registerSuite({
 	'features defined'() {
 		[
 			'es6-object-assign',
-			'es6-array-from',
-			'es6-array-of',
+			'es6-array',
 			'es6-array-fill',
-			'es6-array-findindex',
-			'es6-array-find',
-			'es6-array-copywithin',
-			'es7-array-includes',
+			'es7-array',
 			'es6-string-raw',
 			'es6-string-fromcodepoint',
 			'es6-string-codepointat',
@@ -29,7 +25,6 @@ registerSuite({
 			'es6-map',
 			'es6-weakmap',
 			'es6-symbol',
-			'float32array',
 			'setimmediate',
 			'postmessage',
 			'microtasks',

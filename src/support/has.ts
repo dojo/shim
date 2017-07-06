@@ -21,8 +21,17 @@ add('es6-symbol', typeof global.Symbol !== 'undefined' && typeof Symbol() === 's
 add('es6-object-assign', typeof (<any> Object).assign === 'function');
 
 /* Array */
-add('es6-array-from', 'from' in global.Array);
-add('es6-array-of', 'of' in global.Array);
+add('es6-array', () => {
+	return [
+		'from',
+		'of'
+	].every((key) => key in global.Array) && [
+		'findIndex',
+		'find',
+		'copyWithin'
+	].every((key) => key in global.Array.prototype);
+});
+
 add('es6-array-fill', () => {
 	if ('fill' in global.Array.prototype) {
 		/* Some versions of Safari do not properly implement this */
@@ -30,10 +39,8 @@ add('es6-array-fill', () => {
 	}
 	return false;
 });
-add('es6-array-findindex', 'findIndex' in global.Array.prototype);
-add('es6-array-find', 'find' in global.Array.prototype);
-add('es6-array-copywithin', 'copyWithin' in global.Array.prototype);
-add('es7-array-includes', 'includes' in global.Array.prototype);
+
+add('es7-array', 'includes' in global.Array.prototype);
 
 /* String */
 add('es6-string-raw', function () {
