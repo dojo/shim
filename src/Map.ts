@@ -82,7 +82,7 @@ export interface Map<K, V> {
 	/** Returns an iterable of entries in the map. */
 	[Symbol.iterator](): IterableIterator<[K, V]>;
 
-	readonly [Symbol.toStringTag]: 'Map';
+	readonly [Symbol.toStringTag]: string;
 }
 
 export interface MapConstructor {
