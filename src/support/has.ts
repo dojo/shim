@@ -172,10 +172,10 @@ add('es6-weakmap', () => {
 });
 
 /* Miscellaneous features */
-add('setimmediate', () => typeof global.setImmediate !== 'undefined');
-add('postmessage', () => typeof global.postMessage === 'function');
 add('microtasks', () => has('es6-promise') || has('host-node') || has('dom-mutationobserver'));
+add('postmessage', () => typeof global.postMessage === 'function');
 add('raf', () => typeof global.requestAnimationFrame === 'function');
+add('setimmediate', () => typeof global.setImmediate !== 'undefined');
 
 /* DOM Features */
 add('dom-mutationobserver', () => has('host-browser') && Boolean(global.MutationObserver || global.WebKitMutationObserver));
