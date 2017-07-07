@@ -92,7 +92,7 @@ add('es6-object', () => {
 	].every((name) => typeof global.Object[name] === 'function');
 });
 
-add('es7-object', () => {
+add('es2017-object', () => {
 	return [
 		'values',
 		'entries',
@@ -148,7 +148,7 @@ add('es6-string-raw', () => {
 	return false;
 });
 
-add('es7-string', () => {
+add('es2017-string', () => {
 	return [
 		'padStart',
 		'padEnd'

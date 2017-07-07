@@ -173,7 +173,7 @@ else {
 	};
 }
 
-if (has('es7-object')) {
+if (has('es2017-object')) {
 	const globalObject = global.Object;
 	getOwnPropertyDescriptors = globalObject.getOwnPropertyDescriptors;
 	entries = globalObject.entries;

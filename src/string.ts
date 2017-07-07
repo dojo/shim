@@ -315,7 +315,7 @@ else {
 	};
 }
 
-if (has('es7-string')) {
+if (has('es2017-string')) {
 	padEnd = wrapNative(global.String.prototype.padEnd);
 	padStart = wrapNative(global.String.prototype.padStart);
 }
