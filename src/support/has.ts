@@ -75,15 +75,26 @@ add('es6-string-raw', function () {
 
 	return false;
 });
-add('es6-string-fromcodepoint', 'fromCodePoint' in global.String);
-add('es6-string-codepointat', 'codePointAt' in global.String.prototype);
-add('es6-string-normalize', 'normalize' in global.String.prototype);
-add('es6-string-repeat', 'repeat' in global.String.prototype);
-add('es6-string-startswith', 'startsWith' in global.String.prototype);
-add('es6-string-endswith', 'endsWith' in global.String.prototype);
-add('es6-string-includes', 'includes' in global.String.prototype);
-add('es6-string-padstart', 'padStart' in global.String.prototype);
-add('es6-string-padend', 'padEnd' in global.String.prototype);
+
+add('es6-string', () => {
+	return [ /* static methods */
+		'fromCodePoint'
+	].every((key) => typeof global.String[key] === 'function') && [ /* instance methods */
+		'codePointAt',
+		'normalize',
+		'repeat',
+		'startsWith',
+		'endsWith',
+		'includes'
+	].every((key) => typeof global.String.prototype[key] === 'function');
+});
+
+add('es7-string', () => {
+	return [
+		'padStart',
+		'padEnd'
+	].every((key) => typeof global.String.prototype[key] === 'function');
+});
 
 /* Math */
 
