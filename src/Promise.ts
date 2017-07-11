@@ -31,10 +31,10 @@ if (!has('es6-promise')) {
 		Rejected
 	}
 
-	global.Promise = ShimPromise = <any> class Promise<T> implements Thenable<T> {
-		static all<T>(iterable: Iterable<(T | PromiseLike<T>)> | (T | PromiseLike<T>)[]): Promise<T[]> {
+	global.Promise = ShimPromise = class Promise<T> implements Thenable<T> {
+		static all(iterable: Iterable<(any | PromiseLike<any>)> | (any | PromiseLike<any>)[]): Promise<any> {
 			return new this(function (resolve, reject) {
-				const values: T[] = [];
+				const values: any[] = [];
 				let complete = 0;
 				let total = 0;
 				let populating = true;
@@ -90,7 +90,7 @@ if (!has('es6-promise')) {
 			});
 		}
 
-		static reject<T>(reason?: any): Promise<T> {
+		static reject(reason?: any): Promise<never> {
 			return new this(function (resolve, reject) {
 				reject(reason);
 			});
