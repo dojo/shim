@@ -52,7 +52,7 @@ if (!has('es6-promise')) {
 					resolve(values);
 				}
 
-				function processItem(index: number, item: (T | PromiseLike<T>)): void {
+				function processItem(index: number, item: any): void {
 					++total;
 					if (isThenable(item)) {
 						// If an item Promise rejects, this Promise is immediately rejected with the item
@@ -65,7 +65,7 @@ if (!has('es6-promise')) {
 				}
 
 				let i = 0;
-				forOf(iterable, function (value: T | PromiseLike<T>) {
+				forOf(iterable, function (value: any) {
 					processItem(i, value);
 					i++;
 				});
