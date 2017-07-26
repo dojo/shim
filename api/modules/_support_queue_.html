@@ -91,7 +91,7 @@
 					<div class="tsd-signature tsd-kind-icon">queue<wbr>Animation<wbr>Task<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">queueTask</span><span class="tsd-signature-symbol"> =&nbsp;(function () {if (!has(&#x27;raf&#x27;)) {return queueTask;}function queueAnimationTask(callback: (...args: any[]) &#x3D;&gt; any): Handle {const item: QueueItem &#x3D; {isActive: true,callback: callback};const rafId: number &#x3D; requestAnimationFrame(executeTask.bind(null, item));return getQueueHandle(item, function () {cancelAnimationFrame(rafId);});}// TODO: Use aspect.before when it is available.return has(&#x27;microtasks&#x27;) ? queueAnimationTask : function (callback: (...args: any[]) &#x3D;&gt; any): Handle {checkMicroTaskQueue();return queueAnimationTask(callback);};})()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/support/queue.ts#L132">support/queue.ts:132</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/a9a7662/src/support/queue.ts#L132">support/queue.ts:132</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -116,7 +116,7 @@
 					<div class="tsd-signature tsd-kind-icon">queue<wbr>Micro<wbr>Task<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> =&nbsp;(function () {let enqueue: (item: QueueItem) &#x3D;&gt; void;if (has(&#x27;host-node&#x27;)) {enqueue &#x3D; function (item: QueueItem): void {global.process.nextTick(executeTask.bind(null, item));};}else if (has(&#x27;es6-promise&#x27;)) {enqueue &#x3D; function (item: QueueItem): void {global.Promise.resolve(item).then(executeTask);};}else if (has(&#x27;dom-mutationobserver&#x27;)) {/* tslint:disable-next-line:variable-name */const HostMutationObserver &#x3D; global.MutationObserver || global.WebKitMutationObserver;const node &#x3D; document.createElement(&#x27;div&#x27;);const queue: QueueItem[] &#x3D; [];const observer &#x3D; new HostMutationObserver(function (): void {while (queue.length &gt; 0) {const item &#x3D; queue.shift();if (item &amp;&amp; item.isActive &amp;&amp; item.callback) {item.callback();}}});observer.observe(node, { attributes: true });enqueue &#x3D; function (item: QueueItem): void {queue.push(item);node.setAttribute(&#x27;queueStatus&#x27;, &#x27;1&#x27;);};}else {enqueue &#x3D; function (item: QueueItem): void {checkMicroTaskQueue();microTasks.push(item);};}return function (callback: (...args: any[]) &#x3D;&gt; any): Handle {const item: QueueItem &#x3D; {isActive: true,callback: callback};enqueue(item);return getQueueHandle(item);};})()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/support/queue.ts#L166">support/queue.ts:166</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/a9a7662/src/support/queue.ts#L166">support/queue.ts:166</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -142,7 +142,7 @@
 					<div class="tsd-signature tsd-kind-icon">queue<wbr>Task<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">queueTask</span><span class="tsd-signature-symbol"> =&nbsp;(function() {let destructor: (...args: any[]) &#x3D;&gt; any;let enqueue: (item: QueueItem) &#x3D;&gt; void;// Since the IE implementation of &#x60;setImmediate&#x60; is not flawless, we will test for &#x60;postMessage&#x60; first.if (has(&#x27;postmessage&#x27;)) {const queue: QueueItem[] &#x3D; [];global.addEventListener(&#x27;message&#x27;, function (event: PostMessageEvent): void {// Confirm that the event was triggered by the current window and by this particular implementation.if (event.source &#x3D;&#x3D;&#x3D; global &amp;&amp; event.data &#x3D;&#x3D;&#x3D; &#x27;dojo-queue-message&#x27;) {event.stopPropagation();if (queue.length) {executeTask(queue.shift());}}});enqueue &#x3D; function (item: QueueItem): void {queue.push(item);global.postMessage(&#x27;dojo-queue-message&#x27;, &#x27;*&#x27;);};}else if (has(&#x27;setimmediate&#x27;)) {destructor &#x3D; global.clearImmediate;enqueue &#x3D; function (item: QueueItem): any {return setImmediate(executeTask.bind(null, item));};}else {destructor &#x3D; global.clearTimeout;enqueue &#x3D; function (item: QueueItem): any {return setTimeout(executeTask.bind(null, item), 0);};}function queueTask(callback: (...args: any[]) &#x3D;&gt; any): Handle {const item: QueueItem &#x3D; {isActive: true,callback: callback};const id: any &#x3D; enqueue(item);return getQueueHandle(item, destructor &amp;&amp; function () {destructor(id);});};// TODO: Use aspect.before when it is available.return has(&#x27;microtasks&#x27;) ? queueTask : function (callback: (...args: any[]) &#x3D;&gt; any): Handle {checkMicroTaskQueue();return queueTask(callback);};})()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/support/queue.ts#L44">support/queue.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/a9a7662/src/support/queue.ts#L44">support/queue.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
