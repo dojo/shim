@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>WeakMapConstructor | @dojo/shim</title>
+	<title>SetConstructor | @dojo/shim</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_native_weakmap_.html">&quot;native/WeakMap&quot;</a>
+					<a href="../modules/_set_.html">&quot;Set&quot;</a>
 				</li>
 				<li>
-					<a href="_native_weakmap_.weakmapconstructor.html">WeakMapConstructor</a>
+					<a href="_set_.setconstructor.html">SetConstructor</a>
 				</li>
 			</ul>
-			<h1>Interface WeakMapConstructor</h1>
+			<h1>Interface SetConstructor</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">WeakMapConstructor</span>
+						<span class="target">SetConstructor</span>
 					</li>
 				</ul>
 			</section>
@@ -80,13 +80,13 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-has-type-parameter"><a href="_native_weakmap_.weakmapconstructor.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-interface tsd-has-type-parameter"><a href="_set_.setconstructor.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_native_weakmap_.weakmapconstructor.html#prototype" class="tsd-kind-icon">prototype</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_set_.setconstructor.html#prototype" class="tsd-kind-icon">prototype</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,40 +98,95 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-interface tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Weak<wbr>Map<wbr>Constructor<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_native_weakmap_.weakmap.html" class="tsd-signature-type">WeakMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Weak<wbr>Map<wbr>Constructor&lt;K, V&gt;<span class="tsd-signature-symbol">(</span>entries<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_native_weakmap_.weakmap.html" class="tsd-signature-type">WeakMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Set<wbr>Constructor<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_set_.set.html" class="tsd-signature-type">Set</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Set<wbr>Constructor&lt;T&gt;<span class="tsd-signature-symbol">(</span>iterator<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_set_.set.html" class="tsd-signature-type">Set</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Set<wbr>Constructor&lt;T&gt;<span class="tsd-signature-symbol">(</span>iterator<span class="tsd-signature-symbol">: </span><a href="_iterator_.iterable.html" class="tsd-signature-type">Iterable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_set_.set.html" class="tsd-signature-type">Set</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/WeakMap.ts#L11">native/WeakMap.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/Set.ts#L74">Set.ts:74</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="_native_weakmap_.weakmap.html" class="tsd-signature-type">WeakMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new Set</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>constructor</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_set_.set.html" class="tsd-signature-type">Set</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/WeakMap.ts#L12">native/WeakMap.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/Set.ts#L80">Set.ts:80</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new Set</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>constructor</dt>
+									<dd></dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>K</h4>
-								</li>
-								<li>
-									<h4>V</h4>
+									<h4>T</h4>
 								</li>
 							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> entries: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">]</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> iterator: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The iterable structure to initialize the set with</p>
+										</div>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_native_weakmap_.weakmap.html" class="tsd-signature-type">WeakMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_set_.set.html" class="tsd-signature-type">Set</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/Set.ts#L89">Set.ts:89</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new Set</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>constructor</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>iterator: <a href="_iterator_.iterable.html" class="tsd-signature-type">Iterable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The iterable structure to initialize the set with</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_set_.set.html" class="tsd-signature-type">Set</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -141,10 +196,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="prototype" class="tsd-anchor"></a>
 					<h3>prototype</h3>
-					<div class="tsd-signature tsd-kind-icon">prototype<span class="tsd-signature-symbol">:</span> <a href="_native_weakmap_.weakmap.html" class="tsd-signature-type">WeakMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">prototype<span class="tsd-signature-symbol">:</span> <a href="_set_.set.html" class="tsd-signature-type">Set</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/WeakMap.ts#L14">native/WeakMap.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/Set.ts#L100">Set.ts:100</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -156,26 +211,80 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_map_.html">"<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_observable_.html">"<wbr>Observable"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_promise_.html">"<wbr>Promise"</a>
+					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_native_weakmap_.html">"native/<wbr>Weak<wbr>Map"</a>
+						<a href="../modules/_set_.html">"<wbr>Set"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_symbol_.html">"<wbr>Symbol"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_weakmap_.html">"<wbr>Weak<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_array_.html">"array"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_global_.html">"global"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_interfaces_d_.html">"interfaces.d"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_iterator_.html">"iterator"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_main_.html">"main"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_math_.html">"math"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_number_.html">"number"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_object_.html">"object"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_string_.html">"string"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_decorators_.html">"support/decorators"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_has_.html">"support/has"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_queue_.html">"support/queue"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_util_.html">"support/util"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_native_weakmap_.weakmap.html" class="tsd-kind-icon">Weak<wbr>Map</a>
+						<a href="_set_.set.html" class="tsd-kind-icon">Set</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_native_weakmap_.weakmapconstructor.html" class="tsd-kind-icon">Weak<wbr>Map<wbr>Constructor</a>
+						<a href="_set_.setconstructor.html" class="tsd-kind-icon">Set<wbr>Constructor</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-interface tsd-has-type-parameter">
-								<a href="_native_weakmap_.weakmapconstructor.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_set_.setconstructor.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_native_weakmap_.weakmapconstructor.html#prototype" class="tsd-kind-icon">prototype</a>
+								<a href="_set_.setconstructor.html#prototype" class="tsd-kind-icon">prototype</a>
 							</li>
 						</ul>
 					</li>

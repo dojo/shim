@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Map | @dojo/shim</title>
+	<title>WeakMap | @dojo/shim</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_native_map_.html">&quot;native/Map&quot;</a>
+					<a href="../modules/_weakmap_.html">&quot;WeakMap&quot;</a>
 				</li>
 				<li>
-					<a href="_native_map_.map.html">Map</a>
+					<a href="_weakmap_.weakmap.html">WeakMap</a>
 				</li>
 			</ul>
-			<h1>Interface Map&lt;K, V&gt;</h1>
+			<h1>Interface WeakMap&lt;K, V&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>K</h4>
+						<h4>K<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h4>
 					</li>
 					<li>
 						<h4>V</h4>
@@ -80,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Map</span>
+						<span class="target">WeakMap</span>
 					</li>
 				</ul>
 			</section>
@@ -91,18 +91,16 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_native_map_.map.html#size" class="tsd-kind-icon">size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_weakmap_.weakmap.html#___tostringtag" class="tsd-kind-icon">__@to<wbr>String<wbr>Tag</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_native_map_.map.html#clear" class="tsd-kind-icon">clear</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_native_map_.map.html#delete" class="tsd-kind-icon">delete</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_native_map_.map.html#foreach" class="tsd-kind-icon">for<wbr>Each</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_native_map_.map.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_native_map_.map.html#has" class="tsd-kind-icon">has</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_native_map_.map.html#set" class="tsd-kind-icon">set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_weakmap_.weakmap.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_weakmap_.weakmap.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_weakmap_.weakmap.html#has" class="tsd-kind-icon">has</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_weakmap_.weakmap.html#set" class="tsd-kind-icon">set</a></li>
 							</ul>
 						</section>
 					</div>
@@ -111,35 +109,18 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="size" class="tsd-anchor"></a>
-					<h3>size</h3>
-					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="___tostringtag" class="tsd-anchor"></a>
+					<h3>__@to<wbr>String<wbr>Tag</h3>
+					<div class="tsd-signature tsd-kind-icon">__@to<wbr>String<wbr>Tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"WeakMap"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/Map.ts#L10">native/Map.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/WeakMap.ts#L40">WeakMap.ts:40</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="clear" class="tsd-anchor"></a>
-					<h3>clear</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">clear<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/Map.ts#L4">native/Map.ts:4</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="delete" class="tsd-anchor"></a>
 					<h3>delete</h3>
@@ -150,66 +131,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/Map.ts#L5">native/Map.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/WeakMap.ts#L13">WeakMap.ts:13</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Remove a <code>key</code> from the map</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The key to remove</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="foreach" class="tsd-anchor"></a>
-					<h3>for<wbr>Each</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">for<wbr>Each<span class="tsd-signature-symbol">(</span>callbackfn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, thisArg<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/Map.ts#L6">native/Map.ts:6</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>callbackfn: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, map<span class="tsd-signature-symbol">: </span><a href="_native_map_.map.html" class="tsd-signature-type">Map</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>value: <span class="tsd-signature-type">V</span></h5>
-														</li>
-														<li>
-															<h5>index: <span class="tsd-signature-type">K</span></h5>
-														</li>
-														<li>
-															<h5>map: <a href="_native_map_.map.html" class="tsd-signature-type">Map</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> thisArg: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p><code>true</code> if the value was removed, otherwise <code>false</code></p>
 						</li>
 					</ul>
 				</section>
@@ -223,19 +163,28 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/Map.ts#L7">native/Map.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/WeakMap.ts#L21">WeakMap.ts:21</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieve the value, based on the supplied <code>key</code></p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The key to retrieve the <code>value</code> for</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">V</span>
 								<span class="tsd-signature-symbol"> | </span>
 								<span class="tsd-signature-type">undefined</span>
 							</h4>
+							<p>the <code>value</code> based on the <code>key</code> if found, otherwise <code>false</code></p>
 						</li>
 					</ul>
 				</section>
@@ -249,16 +198,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/Map.ts#L8">native/Map.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/WeakMap.ts#L29">WeakMap.ts:29</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Determines if a <code>key</code> is present in the map</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The <code>key</code> to check</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p><code>true</code> if the key is part of the map, otherwise <code>false</code>.</p>
 						</li>
 					</ul>
 				</section>
@@ -266,22 +224,33 @@
 					<a name="set" class="tsd-anchor"></a>
 					<h3>set</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, value<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">V</a><span class="tsd-signature-symbol">)</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/Map.ts#L9">native/Map.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/WeakMap.ts#L38">WeakMap.ts:38</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set a <code>value</code> for a particular <code>key</code>.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The <code>key</code> to set the <code>value</code> for</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> value: <a href="" class="tsd-signature-type">V</a></h5>
+									<h5>value: <span class="tsd-signature-type">V</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The <code>value</code> to set</p>
+									</div>
 								</li>
 							</ul>
 						</li>
@@ -295,8 +264,62 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_map_.html">"<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_observable_.html">"<wbr>Observable"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_promise_.html">"<wbr>Promise"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_set_.html">"<wbr>Set"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_symbol_.html">"<wbr>Symbol"</a>
+					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_native_map_.html">"native/<wbr>Map"</a>
+						<a href="../modules/_weakmap_.html">"<wbr>Weak<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_array_.html">"array"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_global_.html">"global"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_interfaces_d_.html">"interfaces.d"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_iterator_.html">"iterator"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_main_.html">"main"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_math_.html">"math"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_number_.html">"number"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_object_.html">"object"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_string_.html">"string"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_decorators_.html">"support/decorators"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_has_.html">"support/has"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_queue_.html">"support/queue"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_util_.html">"support/util"</a>
 					</li>
 				</ul>
 			</nav>
@@ -305,35 +328,29 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_native_map_.map.html" class="tsd-kind-icon">Map</a>
+						<a href="_weakmap_.weakmap.html" class="tsd-kind-icon">Weak<wbr>Map</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_native_map_.map.html#size" class="tsd-kind-icon">size</a>
+								<a href="_weakmap_.weakmap.html#___tostringtag" class="tsd-kind-icon">__@to<wbr>String<wbr>Tag</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_native_map_.map.html#clear" class="tsd-kind-icon">clear</a>
+								<a href="_weakmap_.weakmap.html#delete" class="tsd-kind-icon">delete</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_native_map_.map.html#delete" class="tsd-kind-icon">delete</a>
+								<a href="_weakmap_.weakmap.html#get" class="tsd-kind-icon">get</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_native_map_.map.html#foreach" class="tsd-kind-icon">for<wbr>Each</a>
+								<a href="_weakmap_.weakmap.html#has" class="tsd-kind-icon">has</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_native_map_.map.html#get" class="tsd-kind-icon">get</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_native_map_.map.html#has" class="tsd-kind-icon">has</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_native_map_.map.html#set" class="tsd-kind-icon">set</a>
+								<a href="_weakmap_.weakmap.html#set" class="tsd-kind-icon">set</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_native_map_.mapconstructor.html" class="tsd-kind-icon">Map<wbr>Constructor</a>
+						<a href="_weakmap_.weakmapconstructor.html" class="tsd-kind-icon">Weak<wbr>Map<wbr>Constructor</a>
 					</li>
 				</ul>
 			</nav>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>FindCallback | @dojo/shim</title>
+	<title>StringNormalize | @dojo/shim</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,74 +52,93 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_native_array_.html">&quot;native/array&quot;</a>
+					<a href="../modules/_string_.html">&quot;string&quot;</a>
 				</li>
 				<li>
-					<a href="_native_array_.findcallback.html">FindCallback</a>
+					<a href="_string_.stringnormalize.html">StringNormalize</a>
 				</li>
 			</ul>
-			<h1>Interface FindCallback&lt;T&gt;</h1>
+			<h1>Interface StringNormalize</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>T</h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">FindCallback</span>
+						<span class="target">StringNormalize</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
 				<h3 class="tsd-before-signature">Callable</h3>
-				<ul class="tsd-signatures tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">__call<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, array<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ArrayLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				<ul class="tsd-signatures tsd-kind-interface tsd-parent-kind-external-module">
+					<li class="tsd-signature tsd-kind-icon">__call<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, form<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"NFC"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"NFD"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"NFKC"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"NFKD"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					<li class="tsd-signature tsd-kind-icon">__call<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, form<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/native/array.ts#L14">native/array.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/string.ts#L5">string.ts:5</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>A callback function when using find</p>
+								<p>Returns the String value result of normalizing the string into the normalization form
+								named by form as specified in Unicode Standard Annex #15, Unicode Normalization Forms.</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>element: <span class="tsd-signature-type">T</span></h5>
+								<h5>target: <span class="tsd-signature-type">string</span></h5>
 								<div class="tsd-comment tsd-typography">
-									<p>The element that is currenty being analysed</p>
+									<p>The target string</p>
 								</div>
 							</li>
 							<li>
-								<h5>index: <span class="tsd-signature-type">number</span></h5>
+								<h5>form: <span class="tsd-signature-type">"NFC"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"NFD"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"NFKC"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"NFKD"</span></h5>
 								<div class="tsd-comment tsd-typography">
-									<p>The current index of the element that is being analysed</p>
-								</div>
-							</li>
-							<li>
-								<h5>array: <span class="tsd-signature-type">ArrayLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>The source array</p>
+									<p>Applicable values: &quot;NFC&quot;, &quot;NFD&quot;, &quot;NFKC&quot;, or &quot;NFKD&quot;, If not specified default
+									is &quot;NFC&quot;</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+					</li>
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/string.ts#L13">string.ts:13</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Returns the String value result of normalizing the string into the normalization form
+								named by form as specified in Unicode Standard Annex #15, Unicode Normalization Forms.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>target: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The target string</p>
+								</div>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> form: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Applicable values: &quot;NFC&quot;, &quot;NFD&quot;, &quot;NFKC&quot;, or &quot;NFKD&quot;, If not specified default
+									is &quot;NFC&quot;</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -130,8 +149,62 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_map_.html">"<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_observable_.html">"<wbr>Observable"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_promise_.html">"<wbr>Promise"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_set_.html">"<wbr>Set"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_symbol_.html">"<wbr>Symbol"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_weakmap_.html">"<wbr>Weak<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_array_.html">"array"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_global_.html">"global"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_interfaces_d_.html">"interfaces.d"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_iterator_.html">"iterator"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_main_.html">"main"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_math_.html">"math"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_number_.html">"number"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_object_.html">"object"</a>
+					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_native_array_.html">"native/array"</a>
+						<a href="../modules/_string_.html">"string"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_decorators_.html">"support/decorators"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_has_.html">"support/has"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_queue_.html">"support/queue"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_support_util_.html">"support/util"</a>
 					</li>
 				</ul>
 			</nav>
@@ -139,37 +212,52 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_native_array_.findcallback.html" class="tsd-kind-icon">Find<wbr>Callback</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_string_.stringnormalize.html" class="tsd-kind-icon">String<wbr>Normalize</a>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_native_array_.from.html" class="tsd-kind-icon">From</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_native_array_.mapcallback.html" class="tsd-kind-icon">Map<wbr>Callback</a>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_string_.html#high_surrogate_max" class="tsd-kind-icon">HIGH_<wbr>SURROGATE_<wbr>MAX</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_native_array_.html#copywithin" class="tsd-kind-icon">copy<wbr>Within</a>
+						<a href="../modules/_string_.html#high_surrogate_min" class="tsd-kind-icon">HIGH_<wbr>SURROGATE_<wbr>MIN</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_native_array_.html#fill" class="tsd-kind-icon">fill</a>
+						<a href="../modules/_string_.html#low_surrogate_max" class="tsd-kind-icon">LOW_<wbr>SURROGATE_<wbr>MAX</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_native_array_.html#find" class="tsd-kind-icon">find</a>
+						<a href="../modules/_string_.html#low_surrogate_min" class="tsd-kind-icon">LOW_<wbr>SURROGATE_<wbr>MIN</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_native_array_.html#findindex" class="tsd-kind-icon">find<wbr>Index</a>
+						<a href="../modules/_string_.html#codepointat" class="tsd-kind-icon">code<wbr>Point<wbr>At</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_native_array_.html#from-1" class="tsd-kind-icon">from</a>
+						<a href="../modules/_string_.html#endswith" class="tsd-kind-icon">ends<wbr>With</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_native_array_.html#includes" class="tsd-kind-icon">includes</a>
+						<a href="../modules/_string_.html#fromcodepoint" class="tsd-kind-icon">from<wbr>Code<wbr>Point</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_native_array_.html#of" class="tsd-kind-icon">of</a>
+						<a href="../modules/_string_.html#includes" class="tsd-kind-icon">includes</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_string_.html#normalize" class="tsd-kind-icon">normalize</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_string_.html#padend" class="tsd-kind-icon">pad<wbr>End</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_string_.html#padstart" class="tsd-kind-icon">pad<wbr>Start</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_string_.html#raw" class="tsd-kind-icon">raw</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_string_.html#repeat" class="tsd-kind-icon">repeat</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_string_.html#startswith" class="tsd-kind-icon">starts<wbr>With</a>
 					</li>
 				</ul>
 			</nav>

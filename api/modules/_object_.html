@@ -67,8 +67,18 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../interfaces/_object_.objectassign.html" class="tsd-kind-icon">Object<wbr>Assign</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../interfaces/_object_.objectenteries.html" class="tsd-kind-icon">Object<wbr>Enteries</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../interfaces/_object_.objectgetownpropertydescriptors.html" class="tsd-kind-icon">Object<wbr>Get<wbr>Own<wbr>Property<wbr>Descriptors</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../interfaces/_object_.objectvalues.html" class="tsd-kind-icon">Object<wbr>Values</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_object_.html#assign" class="tsd-kind-icon">assign</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_object_.html#entries" class="tsd-kind-icon">entries</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_object_.html#getownpropertydescriptor" class="tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Descriptor</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_object_.html#getownpropertydescriptors" class="tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Descriptors</a></li>
@@ -85,22 +95,46 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="entries" class="tsd-anchor"></a>
-					<h3>entries</h3>
-					<div class="tsd-signature tsd-kind-icon">entries<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;&#x27;entries&#x27; in Object? (&lt;any&gt; Object).entries: Shim.entries</span></div>
+					<a name="assign" class="tsd-anchor"></a>
+					<h3>assign</h3>
+					<div class="tsd-signature tsd-kind-icon">assign<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_object_.objectassign.html" class="tsd-signature-type">ObjectAssign</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/object.ts#L101">object.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/object.ts#L75">object.ts:75</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="entries" class="tsd-anchor"></a>
+					<h3>entries</h3>
+					<div class="tsd-signature tsd-kind-icon">entries<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_object_.objectenteries.html" class="tsd-signature-type">ObjectEnteries</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/object.ts#L116">object.ts:116</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="getownpropertydescriptor" class="tsd-anchor"></a>
+					<h3>get<wbr>Own<wbr>Property<wbr>Descriptor</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Descriptor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/object.ts#L84">object.ts:84</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Returns the keys and values of the enumerable properties and methods of an object. Each entry will be returned as an
-							array holding the [key, value].</p>
+							<p>Gets the own property descriptor of the specified object.
+								An own property descriptor is one that is defined directly on the object and is not
+							inherited from the object&#39;s prototype.</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>param</dt>
-							<dd><p>Object that contains the properties and methods.</p>
+							<dd><p>Object that contains the property.</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>Name of the property.</p>
 							</dd>
 						</dl>
 					</div>
@@ -108,49 +142,27 @@
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-has-type-parameter tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon">&lt;T, K&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, propertyKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PropertyDescriptor</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
+										<h4 class="tsd-type-parameters-title">Type parameters</h4>
+										<ul class="tsd-type-parameters">
 											<li>
-												<h5>o: <span class="tsd-signature-type">any</span></h5>
+												<h4>T</h4>
+											</li>
+											<li>
+												<h4>K<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T</span></h4>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="getownpropertydescriptor" class="tsd-anchor"></a>
-					<h3>get<wbr>Own<wbr>Property<wbr>Descriptor</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Descriptor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;hasGetOwnPropertySymbols? Object.getOwnPropertyDescriptor: Shim.getOwnPropertyDescriptor</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/object.ts#L105">object.ts:105</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, property<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PropertyDescriptor</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>o: <span class="tsd-signature-type">any</span></h5>
+												<h5>o: <span class="tsd-signature-type">T</span></h5>
 											</li>
 											<li>
-												<h5>property: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+												<h5>propertyKey: <span class="tsd-signature-type">K</span></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PropertyDescriptor</span>
@@ -166,50 +178,30 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
 					<a name="getownpropertydescriptors" class="tsd-anchor"></a>
 					<h3>get<wbr>Own<wbr>Property<wbr>Descriptors</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Descriptors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;&#x27;getOwnPropertyDescriptors&#x27; in Object? (&lt;any&gt; Object).getOwnPropertyDescriptors: getOwnPropertyDescriptorsWrapper</span></div>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Descriptors<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_object_.objectgetownpropertydescriptors.html" class="tsd-signature-type">ObjectGetOwnPropertyDescriptors</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/object.ts#L123">object.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/object.ts#L114">object.ts:114</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>o: <span class="tsd-signature-type">any</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
 					<a name="getownpropertynames" class="tsd-anchor"></a>
 					<h3>get<wbr>Own<wbr>Property<wbr>Names</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Names<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;hasGetOwnPropertySymbols? Object.getOwnPropertyNames: Shim.getOwnPropertyNames</span></div>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Names<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/object.ts#L74">object.ts:74</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/object.ts#L91">object.ts:91</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Returns an array of own properties who key is a string</p>
+							<p>Returns the names of the own properties of an object. The own properties of an object are those that are defined directly
+							on that object, and are not inherited from the object&#39;s prototype. The properties of an object include both fields (objects) and functions.</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>param</dt>
-							<dd><p>The object to return the properties for</p>
+							<dd><p>Object that contains the own properties.</p>
 							</dd>
 						</dl>
 					</div>
@@ -238,19 +230,19 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
 					<a name="getownpropertysymbols" class="tsd-anchor"></a>
 					<h3>get<wbr>Own<wbr>Property<wbr>Symbols</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Symbols<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;hasGetOwnPropertySymbols? (&lt;any&gt; Object).getOwnPropertySymbols: Shim.getOwnPropertySymbols</span></div>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Own<wbr>Property<wbr>Symbols<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/object.ts#L63">object.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/object.ts#L97">object.ts:97</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Returns an array of own properties who key is a symbol</p>
+							<p>Returns an array of all symbol properties found directly on object o.</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>param</dt>
-							<dd><p>The object to return the properties for</p>
+							<dd><p>Object to retrieve the symbols from.</p>
 							</dd>
 						</dl>
 					</div>
@@ -279,25 +271,22 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
 					<a name="is" class="tsd-anchor"></a>
 					<h3>is</h3>
-					<div class="tsd-signature tsd-kind-icon">is<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;&#x27;is&#x27; in Object? (&lt;any&gt; Object).is: Shim.is</span></div>
+					<div class="tsd-signature tsd-kind-icon">is<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/object.ts#L49">object.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/object.ts#L104">object.ts:104</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Determines whether two values are the same value.</p>
+							<p>Returns true if the values are the same value, false otherwise.</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>param</dt>
-							<dd><p>The first value to compare</p>
+							<dd><p>The first value.</p>
 							</dd>
 							<dt>param</dt>
-							<dd><p>The second value to compare</p>
-							</dd>
-							<dt>returns</dt>
-							<dd><p>true if the values are the same; false otherwise</p>
+							<dd><p>The second value.</p>
 							</dd>
 						</dl>
 					</div>
@@ -329,10 +318,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
 					<a name="keys" class="tsd-anchor"></a>
 					<h3>keys</h3>
-					<div class="tsd-signature tsd-kind-icon">keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;hasGetOwnPropertySymbols? Object.keys: Shim.symbolAwareKeys</span></div>
+					<div class="tsd-signature tsd-kind-icon">keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/object.ts#L84">object.ts:84</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/object.ts#L110">object.ts:110</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -350,14 +339,14 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>o: <span class="tsd-signature-type">any</span></h5>
+												<h5>o: <span class="tsd-signature-type">object</span></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -370,43 +359,12 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
 					<a name="values" class="tsd-anchor"></a>
 					<h3>values</h3>
-					<div class="tsd-signature tsd-kind-icon">values<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;&#x27;values&#x27; in Object? (&lt;any&gt; Object).values: Shim.values</span></div>
+					<div class="tsd-signature tsd-kind-icon">values<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_object_.objectvalues.html" class="tsd-signature-type">ObjectValues</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/object.ts#L92">object.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/object.ts#L118">object.ts:118</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Returns the values of the enumerable properties and methods of an object.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>param</dt>
-							<dd><p>Object that contains the properties and methods.</p>
-							</dd>
-						</dl>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>o: <span class="tsd-signature-type">any</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -416,13 +374,82 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_map_.html">"<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_observable_.html">"<wbr>Observable"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_promise_.html">"<wbr>Promise"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_set_.html">"<wbr>Set"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_symbol_.html">"<wbr>Symbol"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_weakmap_.html">"<wbr>Weak<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_array_.html">"array"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_global_.html">"global"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_interfaces_d_.html">"interfaces.d"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_iterator_.html">"iterator"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_main_.html">"main"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_math_.html">"math"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_number_.html">"number"</a>
+					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="_object_.html">"object"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_string_.html">"string"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_support_decorators_.html">"support/decorators"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_support_has_.html">"support/has"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_support_queue_.html">"support/queue"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_support_util_.html">"support/util"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../interfaces/_object_.objectassign.html" class="tsd-kind-icon">Object<wbr>Assign</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../interfaces/_object_.objectenteries.html" class="tsd-kind-icon">Object<wbr>Enteries</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../interfaces/_object_.objectgetownpropertydescriptors.html" class="tsd-kind-icon">Object<wbr>Get<wbr>Own<wbr>Property<wbr>Descriptors</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../interfaces/_object_.objectvalues.html" class="tsd-kind-icon">Object<wbr>Values</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="_object_.html#assign" class="tsd-kind-icon">assign</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="_object_.html#entries" class="tsd-kind-icon">entries</a>
 					</li>

@@ -67,15 +67,15 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Modules</h3>
+							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-module tsd-parent-kind-external-module"><a href="_symbol_.shim.html" class="tsd-kind-icon">Shim</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_symbol_.html#symbol" class="tsd-kind-icon">Symbol</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Variables</h3>
+							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_symbol_.html#issymbol" class="tsd-kind-icon">is<wbr>Symbol</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_symbol_.html#issymbol" class="tsd-kind-icon">is<wbr>Symbol</a></li>
 							</ul>
 						</section>
 					</div>
@@ -84,14 +84,49 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="issymbol" class="tsd-anchor"></a>
-					<h3>is<wbr>Symbol</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Symbol<span class="tsd-signature-symbol">:</span> <a href="_symbol_.shim.html#issymbol" class="tsd-signature-type">isSymbol</a><span class="tsd-signature-symbol"> =&nbsp;Shim.isSymbol</span></div>
+					<a name="symbol" class="tsd-anchor"></a>
+					<h3>Symbol</h3>
+					<div class="tsd-signature tsd-kind-icon">Symbol<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SymbolConstructor</span><span class="tsd-signature-symbol"> =&nbsp;global.Symbol</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dojo/shim/blob/a793cbd/src/Symbol.ts#L167">Symbol.ts:167</a></li>
+							<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/Symbol.ts#L11">Symbol.ts:11</a></li>
 						</ul>
 					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="issymbol" class="tsd-anchor"></a>
+					<h3>is<wbr>Symbol</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Symbol<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dojo/shim/blob/cc0af58/src/Symbol.ts#L134">Symbol.ts:134</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A custom guard function that determines if an object is a symbol or not</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The value to check to see if it is a symbol or not</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Returns true if a symbol or not (and narrows the type guard)</p>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -101,19 +136,71 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_map_.html">"<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_observable_.html">"<wbr>Observable"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_promise_.html">"<wbr>Promise"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_set_.html">"<wbr>Set"</a>
+					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="_symbol_.html">"<wbr>Symbol"</a>
-						<ul>
-							<li class=" tsd-kind-module tsd-parent-kind-external-module">
-								<a href="_symbol_.shim.html">Shim</a>
-							</li>
-						</ul>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_weakmap_.html">"<wbr>Weak<wbr>Map"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_array_.html">"array"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_global_.html">"global"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_interfaces_d_.html">"interfaces.d"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_iterator_.html">"iterator"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_main_.html">"main"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_math_.html">"math"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_number_.html">"number"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_object_.html">"object"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_string_.html">"string"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_support_decorators_.html">"support/decorators"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_support_has_.html">"support/has"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_support_queue_.html">"support/queue"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_support_util_.html">"support/util"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="_symbol_.html#symbol" class="tsd-kind-icon">Symbol</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_symbol_.html#issymbol" class="tsd-kind-icon">is<wbr>Symbol</a>
 					</li>
 				</ul>
