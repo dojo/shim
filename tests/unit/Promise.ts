@@ -1,9 +1,10 @@
-import * as registerSuite from 'intern!object';
-import * as assert from 'intern/chai!assert';
 import { Thenable } from '../../src/interfaces';
 import Promise from '../../src/Promise';
 import { ShimIterator } from '../../src/iterator';
 import '../../src/Symbol';
+
+const { registerSuite } = intern.getInterface('object');
+const { assert } = intern.getPlugin('chai');
 
 type TypeUnderTest = typeof Promise;
 
@@ -439,7 +440,7 @@ export function addPromiseTests(suite: any, Promise: TypeUnderTest) {
 				assert.strictEqual(calledAlready, false, 'resolver should not have been called');
 				calledAlready = true;
 				assert.strictEqual(value, 1, 'resolver called with unexpected value');
-			})).then(dfd.resolve, dfd.reject);
+			})).then(() => dfd.resolve(), () => dfd.reject());
 		}
 	};
 
@@ -483,10 +484,9 @@ export function addPromiseTests(suite: any, Promise: TypeUnderTest) {
 }
 
 let suite = {
-	name: 'Promise',
 	Promise: {}
 };
 
 addPromiseTests(suite.Promise, Promise);
 
-registerSuite(suite);
+registerSuite('Promise', suite);

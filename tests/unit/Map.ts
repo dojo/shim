@@ -1,14 +1,13 @@
-import * as registerSuite from 'intern!object';
-import * as assert from 'intern/chai!assert';
 import { forOf, isIterable, IterableIterator, ShimIterator } from '../../src/iterator';
 import Map from '../../src/Map';
+
+const { registerSuite } = intern.getInterface('object');
+const { assert } = intern.getPlugin('chai');
 
 let map: Map<any, any>;
 let mapArgs: any[];
 
-registerSuite({
-	name: 'Map',
-
+registerSuite('Map', {
 	instantiation: {
 		'null data'() {
 			assert.doesNotThrow(function () {
@@ -57,7 +56,7 @@ registerSuite({
 	},
 
 	'delete': {
-		before() {
+		before(this: any) {
 			map = new Map([
 				[ 3, 'abc' ],
 				[ 4, 'def' ]
@@ -102,7 +101,7 @@ registerSuite({
 	},
 
 	forEach: {
-		before() {
+		before(this: any) {
 			function foo() {}
 			const object = Object.create(null);
 			const array: any[] = [];
@@ -135,7 +134,7 @@ registerSuite({
 	},
 
 	get: {
-		before() {
+		before(this: any) {
 			map = new Map([
 				[ 0, 'a' ],
 				[ 8, 'b' ],
@@ -156,7 +155,7 @@ registerSuite({
 	},
 
 	has: {
-		before() {
+		before(this: any) {
 			map = new Map<number, string>([
 				[ 3, 'abc' ]
 			]);

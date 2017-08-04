@@ -1,12 +1,11 @@
-import * as registerSuite from 'intern!object';
-import * as assert from 'intern/chai!assert';
-import global from '../../../src/global';
 import has from '../../../src/support/has';
+import global from '../../../src/global';
 import { queueAnimationTask, queueMicroTask, queueTask } from '../../../src/support/queue';
 
-registerSuite({
-	name: 'queue functions',
+const { registerSuite } = intern.getInterface('object');
+const { assert } = intern.getPlugin('chai');
 
+registerSuite('queue functions', {
 	'.queueTask()': function (this: any) {
 		const dfd = this.async(5000);
 		const parts: string[] = [];

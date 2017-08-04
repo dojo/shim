@@ -1,10 +1,10 @@
-import * as registerSuite from 'intern!object';
-import * as assert from 'intern/chai!assert';
 import Symbol, { isSymbol } from '../../src/Symbol';
 import has from '../../src/support/has';
 
-registerSuite({
-	name: 'Symbol',
+const { registerSuite } = intern.getInterface('object');
+const { assert } = intern.getPlugin('chai');
+
+registerSuite('Symbol', {
 	native: function (this: any) {
 		if (!has('es6-symbol')) {
 			this.skip('checking native implementation');

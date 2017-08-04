@@ -1,13 +1,12 @@
-import * as assert from 'intern/chai!assert';
-import * as registerSuite from 'intern!object';
+const { registerSuite } = intern.getInterface('object');
+const { assert } = intern.getPlugin('chai');
+import pollUntil from '@theintern/leadfoot/helpers/pollUntil';
 
-import pollUntil = require('intern/dojo/node!leadfoot/helpers/pollUntil');
-
-registerSuite({
+registerSuite('asyncAwait', {
 	'Async/Await with Bluebird'(this: any) {
 		return this.remote
 			.get((<any> require).toUrl('./bluebird.html'))
-			.then(pollUntil<any>(function () {
+			.then(pollUntil(function () {
 				return (<any> window).callbackValue;
 			}, undefined, 5000), undefined)
 			.then((callbackValue: number) => {
@@ -18,7 +17,7 @@ registerSuite({
 	'Async/Await with Dojo'(this: any) {
 		return this.remote
 			.get((<any> require).toUrl('./asyncAwait.html'))
-			.then(pollUntil<any>(function () {
+			.then(pollUntil(function () {
 				return (<any> window).callbackValue;
 			}, undefined, 5000), undefined)
 			.then((callbackValue: number) => {
@@ -29,7 +28,7 @@ registerSuite({
 	'Async/Await with Bluebird and Dojo'(this: any) {
 		return this.remote
 			.get((<any> require).toUrl('./bluebirdAndDojo.html'))
-			.then(pollUntil<any>(function () {
+			.then(pollUntil(function () {
 				return (<any> window).callbackValue;
 			}, undefined, 5000), undefined)
 			.then((callbackValue: number) => {
