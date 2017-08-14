@@ -146,7 +146,7 @@ registerSuite({
 			// executed. As a result, the following just tests that queueMicroTask executes its
 			// callbacks before either queueTask or queueAnimationTask.
 			assert.equal(actual.indexOf('start,end,queueMicroTask'), 0);
-		}), 300);
+		}), 1000);
 	},
 
 	'.queueMicroTask() => handle.destroy()': function (this: any) {
