@@ -173,7 +173,7 @@ add('es6-weakmap', () => {
 
 /* Miscellaneous features */
 add('microtasks', () => has('es6-promise') || has('host-node') || has('dom-mutationobserver'), true);
-add('postmessage', () => typeof global.postMessage === 'function', true);
+add('postmessage', () => typeof global.window !== 'undefined' && typeof global.postMessage === 'function', true);
 add('raf', () => typeof global.requestAnimationFrame === 'function', true);
 add('setimmediate', () => typeof global.setImmediate !== 'undefined', true);
 
