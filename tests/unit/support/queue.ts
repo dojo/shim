@@ -171,8 +171,8 @@ registerSuite({
 
 	'web workers': {
 		'queue from webworker': function (this: any) {
-			if (global.Worker === undefined) {
-				this.skip('does not support web workers');
+			if (global.Blob === undefined || global.Worker === undefined) {
+				this.skip('does not support blobs and/or web workers');
 				return;
 			}
 
