@@ -1,5 +1,5 @@
-import { forOf, Iterable, IterableIterator, ShimIterator } from './iterator';
 import global from './global';
+import { Iterable, IterableIterator, ShimIterator } from './iterator';
 import { is as objectIs } from './object';
 import has from './support/has';
 import './Symbol';
@@ -146,9 +146,9 @@ if (!has('es6-map')) {
 
 		constructor(iterable?: ArrayLike<[K, V]> | Iterable<[K, V]>) {
 			if (iterable) {
-				forOf(iterable, (value: [K, V]) => {
+				for (const value of iterable) {
 					this.set(value[0], value[1]);
-				});
+				}
 			}
 		}
 
