@@ -193,7 +193,7 @@ else {
 		// Support extension
 		const array: any[] = (typeof Constructor === 'function') ? <any[]> Object(new Constructor(length)) : new Array(length);
 
-		if (!isArrayLike(arrayLike) && !isIterable(arrayLike)) {
+		if (!isArrayLike(arrayLike) && !isIterable(arrayLike) || (isArrayLike(arrayLike) && isNaN(arrayLike.length))) {
 			return array;
 		}
 
