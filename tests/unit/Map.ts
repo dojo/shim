@@ -56,7 +56,7 @@ registerSuite('Map', {
 	},
 
 	'delete': {
-		before(this: any) {
+		before() {
 			map = new Map([
 				[ 3, 'abc' ],
 				[ 4, 'def' ]
