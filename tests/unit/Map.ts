@@ -1,5 +1,6 @@
 import { forOf, isIterable, IterableIterator, ShimIterator } from '../../src/iterator';
 import Map from '../../src/Map';
+import { Tests } from 'intern/lib/interfaces/object';
 
 const { registerSuite } = intern.getInterface('object');
 const { assert } = intern.getPlugin('chai');
@@ -55,7 +56,7 @@ registerSuite('Map', {
 		}
 	},
 
-	'delete': {
+	'delete': <Tests> {
 		before() {
 			map = new Map([
 				[ 3, 'abc' ],
@@ -100,8 +101,8 @@ registerSuite('Map', {
 		});
 	},
 
-	forEach: {
-		before(this: any) {
+	forEach: <Tests> {
+		before() {
 			function foo() {}
 			const object = Object.create(null);
 			const array: any[] = [];
@@ -133,8 +134,8 @@ registerSuite('Map', {
 		}
 	},
 
-	get: {
-		before(this: any) {
+	get: <Tests> {
+		before() {
 			map = new Map([
 				[ 0, 'a' ],
 				[ 8, 'b' ],
@@ -154,8 +155,8 @@ registerSuite('Map', {
 		}
 	},
 
-	has: {
-		before(this: any) {
+	has: <Tests> {
+		before() {
 			map = new Map<number, string>([
 				[ 3, 'abc' ]
 			]);

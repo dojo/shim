@@ -6,7 +6,7 @@ const { registerSuite } = intern.getInterface('object');
 const { assert } = intern.getPlugin('chai');
 
 registerSuite('queue functions', {
-	'.queueTask()': function (this: any) {
+	'.queueTask()': function () {
 		const dfd = this.async(5000);
 		const parts: string[] = [];
 
@@ -34,7 +34,7 @@ registerSuite('queue functions', {
 		}), 300);
 	},
 
-	'.queueTask() => handle.destroy()': function (this: any) {
+	'.queueTask() => handle.destroy()': function () {
 		const dfd = this.async(5000);
 		let parts: string[];
 
@@ -54,7 +54,7 @@ registerSuite('queue functions', {
 		}), 100);
 	},
 
-	'.queueAnimationTask()': function (this: any) {
+	'.queueAnimationTask()': function () {
 		if (!has('host-browser')) {
 			this.skip('browser required.');
 		}
@@ -86,7 +86,7 @@ registerSuite('queue functions', {
 		}), 300);
 	},
 
-	'.queueAnimationTask() => handle.destroy()': function (this: any) {
+	'.queueAnimationTask() => handle.destroy()': function () {
 		if (!has('host-browser')) {
 			this.skip('browser required.');
 		}
@@ -110,7 +110,7 @@ registerSuite('queue functions', {
 		}), 100);
 	},
 
-	'.queueMicroTask()': function (this: any) {
+	'.queueMicroTask()': function () {
 		const dfd = this.async(5000);
 		const parts: string[] = [];
 
@@ -148,7 +148,7 @@ registerSuite('queue functions', {
 		}), 1000);
 	},
 
-	'.queueMicroTask() => handle.destroy()': function (this: any) {
+	'.queueMicroTask() => handle.destroy()': function () {
 		const dfd = this.async(5000);
 		let parts: string[];
 
@@ -169,7 +169,7 @@ registerSuite('queue functions', {
 	},
 
 	'web workers': {
-		'queue from webworker': function (this: any) {
+		'queue from webworker': function () {
 			if (global.Blob === undefined || global.Worker === undefined) {
 				this.skip('does not support blobs and/or web workers');
 				return;

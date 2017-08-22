@@ -3,7 +3,7 @@ const { assert } = intern.getPlugin('chai');
 import pollUntil from '@theintern/leadfoot/helpers/pollUntil';
 
 registerSuite('asyncAwait', {
-	'Async/Await with Bluebird'(this: any) {
+	'Async/Await with Bluebird'() {
 		return this.remote
 			.get((<any> require).toUrl('./bluebird.html'))
 			.then(pollUntil(function () {
@@ -14,7 +14,7 @@ registerSuite('asyncAwait', {
 			});
 	},
 
-	'Async/Await with Dojo'(this: any) {
+	'Async/Await with Dojo'() {
 		return this.remote
 			.get((<any> require).toUrl('./asyncAwait.html'))
 			.then(pollUntil(function () {
@@ -25,7 +25,7 @@ registerSuite('asyncAwait', {
 			});
 	},
 
-	'Async/Await with Bluebird and Dojo'(this: any) {
+	'Async/Await with Bluebird and Dojo'() {
 		return this.remote
 			.get((<any> require).toUrl('./bluebirdAndDojo.html'))
 			.then(pollUntil(function () {

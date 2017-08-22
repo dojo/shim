@@ -5,7 +5,7 @@ const { registerSuite } = intern.getInterface('object');
 const { assert } = intern.getPlugin('chai');
 
 registerSuite('Symbol', {
-	native: function (this: any) {
+	native: function () {
 		if (!has('es6-symbol')) {
 			this.skip('checking native implementation');
 		}
