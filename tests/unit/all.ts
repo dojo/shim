@@ -1,3 +1,6 @@
+// we need to include the TS helpers before we load the rest of the tests
+import '../../src/support/helpers';
+
 import './support/decorators';
 import './support/has';
 import './support/queue';
