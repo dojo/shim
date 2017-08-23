@@ -1,4 +1,4 @@
-import global from '../global';
+import global from './global';
 
 /**
  * Provide any overrides and then load the TypeScript helpers.
