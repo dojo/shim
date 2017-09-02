@@ -5,7 +5,7 @@ import Promise from '../../src/Promise';
 import { ShimIterator } from '../../src/iterator';
 import '../../src/Symbol';
 
-type TypeUnderTest = typeof Promise;
+export type TypeUnderTest = typeof Promise;
 
 /* tslint:disable-next-line:variable-name */
 export function addPromiseTests(suite: any, Promise: TypeUnderTest) {
