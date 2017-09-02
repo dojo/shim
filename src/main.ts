@@ -1,23 +1,37 @@
-import * as array from './array';
-import * as iterator from './iterator';
-import Map from './Map';
-import * as math from './math';
-import * as number from './number';
-import * as object from './object';
-import Set from './Set';
-import * as string from './string';
-import Symbol from './Symbol';
-import WeakMap from './WeakMap';
+// import TS helpers
+import './tslib';
 
-export {
-	array,
-	iterator,
-	Map,
-	math,
-	number,
-	object,
-	Set,
-	string,
-	Symbol,
-	WeakMap
-};
+// import our polyfills
+`!has('es6-promise')`;
+import './Promise';
+
+`!has('es6-symbol')`;
+import './Symbol';
+
+`!has('es6-map')`;
+import './Map';
+
+`!has('es6-weakmap')`;
+import './WeakMap';
+
+`!has('es6-set')`;
+import './Set';
+
+`!has('es6-math')`;
+import './math';
+
+`!has('es6-array', 'es6-array-fill')`;
+import './array';
+
+`!has('es6-string', 'es6-string-raw')`;
+import './string';
+
+`!has('es6-object')`;
+import './object';
+
+// import 3rd party polyfills
+`!has('pointer-events')`;
+import 'pepjs';
+
+`!has('intersection-observer')`;
+import 'intersection-observer';

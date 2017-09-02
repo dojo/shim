@@ -2,6 +2,7 @@
 	"version": "2.0.2",
 	"compilerOptions": {
 		"declaration": false,
+		"downlevelIteration": true,
 		"experimentalDecorators": true,
 		"module": "umd",
 		"lib": [
@@ -21,6 +22,7 @@
 		"moduleResolution": "node",
 		"strictNullChecks": true,
 		"noImplicitThis": true,
+		"noEmitHelpers": true,
 		"types": [ "intern" ]
 	},
 	"include": [

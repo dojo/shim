@@ -1,9 +1,9 @@
-import { Thenable } from './interfaces';
 import global from './global';
-import { queueMicroTask } from './support/queue';
-import { forOf, Iterable } from './iterator';
-import './Symbol';
+import { Thenable } from './interfaces';
+import { Iterable } from './iterator';
 import has from './support/has';
+import { queueMicroTask } from './support/queue';
+import './Symbol';
 
 /**
  * Executor is the interface for functions used to initialize a Promise.
@@ -65,10 +65,10 @@ if (!has('es6-promise')) {
 				}
 
 				let i = 0;
-				forOf(iterable, function (value: any) {
+				for (const value of iterable) {
 					processItem(i, value);
 					i++;
-				});
+				}
 				populating = false;
 
 				finish();
@@ -77,7 +77,7 @@ if (!has('es6-promise')) {
 
 		static race<T>(iterable: Iterable<(T | PromiseLike<T>)> | (T | PromiseLike<T>)[]): Promise<T[]> {
 			return new this(function (resolve: (value?: any) => void, reject) {
-				forOf(iterable, function (item: T | PromiseLike<T>) {
+				for (const item of iterable) {
 					if (item instanceof Promise) {
 						// If a Promise item rejects, this Promise is immediately rejected with the item
 						// Promise's rejection error.
@@ -86,7 +86,7 @@ if (!has('es6-promise')) {
 					else {
 						Promise.resolve(item).then(resolve);
 					}
-				});
+				}
 			});
 		}
 

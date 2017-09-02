@@ -1,5 +1,5 @@
 import global from './global';
-import { forOf, isArrayLike, isIterable, Iterable } from './iterator';
+import { isArrayLike, isIterable, Iterable } from './iterator';
 import { MAX_SAFE_INTEGER } from './number';
 import has from './support/has';
 import { wrapNative } from './support/util';
@@ -193,15 +193,15 @@ else {
 		// Support extension
 		const array: any[] = (typeof Constructor === 'function') ? <any[]> Object(new Constructor(length)) : new Array(length);
 
-		if (!isArrayLike(arrayLike) && !isIterable(arrayLike)) {
+		if (!isArrayLike(arrayLike) && !isIterable(arrayLike) || (isArrayLike(arrayLike) && isNaN(arrayLike.length))) {
 			return array;
 		}
 
 		let i = 0;
-		forOf(arrayLike, function (value): void {
+		for (const value of arrayLike) {
 			array[i] = mapFunction ? mapFunction(value, i) : value;
 			i++;
-		});
+		}
 
 		if ((<any> arrayLike).length !== undefined) {
 			array.length = length;

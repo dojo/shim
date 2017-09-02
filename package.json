@@ -34,5 +34,10 @@
     "intern": "^3.4.1",
     "istanbul": "^0.4.3",
     "typescript": "~2.4.1"
+  },
+  "dependencies": {
+    "intersection-observer": "^0.4.0",
+    "pepjs": "^0.4.2",
+    "tslib": "^1.7.1"
   }
 }

@@ -1,6 +1,6 @@
 import * as registerSuite from 'intern!object';
 import * as assert from 'intern/chai!assert';
-import { forOf, isIterable, IterableIterator, ShimIterator } from '../../src/iterator';
+import { isIterable, IterableIterator, ShimIterator } from '../../src/iterator';
 import Map from '../../src/Map';
 
 let map: Map<any, any>;
@@ -94,11 +94,11 @@ registerSuite({
 		assert.isTrue(isIterable(entries), 'Returns an iterable.');
 
 		let i = 0;
-		forOf(entries, function (value: [ number, any ]): void {
+		for (const value of entries) {
 			assert.strictEqual(value[0], mapArgs[i][0]);
 			assert.strictEqual(value[1], mapArgs[i][1]);
 			i++;
-		});
+		}
 	},
 
 	forEach: {
@@ -182,10 +182,10 @@ registerSuite({
 		assert.isTrue(isIterable(keys), 'Returns an iterable.');
 
 		let i = 0;
-		forOf(keys, function (value: number): void {
+		for (const value of keys) {
 			assert.strictEqual(value, mapArgs[i][0]);
 			i++;
-		});
+		}
 	},
 
 	set: {
@@ -266,9 +266,9 @@ registerSuite({
 		assert.isTrue(isIterable(values), 'Returns an iterable.');
 
 		let i = 0;
-		forOf(values, function (value: any): void {
+		for (const value of values) {
 			assert.strictEqual(value, mapArgs[i][1]);
 			i++;
-		});
+		}
 	}
 });
