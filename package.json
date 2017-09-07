@@ -36,6 +36,7 @@
     "typescript": "~2.4.1"
   },
   "dependencies": {
+    "pepjs": "^0.4.2",
     "tslib": "^1.7.1"
   }
 }
