@@ -1,1 +1,2 @@
 import './asyncAwait';
+import './polyfills';
