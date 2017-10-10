@@ -22,7 +22,7 @@ registerSuite('AMD Util', {
 		return this.remote
 			.get('/_build/tests/functional/amd.html?q=' + encodeURIComponent(JSON.stringify({
 				packages: [
-					{ name: 'existingPackage' }
+					{ name: 'pepjs', location: 'some-location' }
 				]
 			})))
 			.then(pollUntil(function () {
