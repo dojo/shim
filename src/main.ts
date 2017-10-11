@@ -1,3 +1,5 @@
+import './tslib';
+
 import * as array from './array';
 import * as iterator from './iterator';
 import Map from './Map';
