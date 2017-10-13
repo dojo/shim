@@ -4,13 +4,14 @@
 [![codecov](https://codecov.io/gh/dojo/shim/branch/master/graph/badge.svg)](https://codecov.io/gh/dojo/shim)
 [![npm version](https://badge.fury.io/js/%40dojo%2Fshim.svg)](https://badge.fury.io/js/%40dojo%2Fshim)
 
-This package provides functional shims for ECMAScript.
+This package provides functional shims for ECMAScript and access to the Typescript helpers.
 
 It is targeted at providing function shims for ECMAScript 6 and beyond targeted at ECMAScript 5.  It is different
 other solutions of shimming or polyfilling functionality, in that it does not provide the functionality via
 augmenting the built in classes in the global namespace.
 
-The one exception to this though is the `Symbol` functionality, in that the well-known symbols need to be located
+There are two exceptions to this. One is the `Promise` object, which needs to be globally available for async/await
+operations. The other exception is the `Symbol` functionality, in that the well-known symbols need to be located
 off of the global `Symbol` object in order to ensure that the correct symbol is referenced.
 
 **WARNING** This is *beta* software.  While we do not anticipate significant changes to the API at this stage, we may feel the need to do so.  This is not yet production ready, so you should use at your own risk.
@@ -24,6 +25,22 @@ npm install @dojo/shim
 
 # peer dependencies
 npm install @dojo/has
+```
+
+Include the module in your project to load the global shims and Typescript helpers.
+
+```typescript
+import '@dojo/shim';
+```
+
+Since the main module loads the Typescript helpers, you'll want to turn off helper generation in your project. Add the following option to your `tsconfig.json`.
+
+```json
+{
+	"compilerOptions": {
+		"noEmitHelpers": true
+	}
+}
 ```
 
 ## Features
