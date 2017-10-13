@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/dojo/shim/branch/master/graph/badge.svg)](https://codecov.io/gh/dojo/shim)
 [![npm version](https://badge.fury.io/js/%40dojo%2Fshim.svg)](https://badge.fury.io/js/%40dojo%2Fshim)
 
-This package provides functional shims for ECMAScript and access to the Typescript helpers.
+This package provides functional shims for ECMAScript, access to the Typescript helpers, and a quick way to include the polyfills needed to run Dojo 2 in the browser.
 
 It is targeted at providing function shims for ECMAScript 6 and beyond targeted at ECMAScript 5.  It is different
 other solutions of shimming or polyfilling functionality, in that it does not provide the functionality via
@@ -41,6 +41,13 @@ Since the main module loads the Typescript helpers, you'll want to turn off help
 		"noEmitHelpers": true
 	}
 }
+```
+
+If you are using Dojo 2 in the browser, you will want to load the browser polyfills. These are available by simply importing the `@dojo/shim/browser` module.
+
+```typescript
+// load polyfills for features used by Dojo 2
+import '@dojo/shim/browser';
 ```
 
 ## Features
