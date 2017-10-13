@@ -50,6 +50,8 @@ If you are using Dojo 2 in the browser, you will want to load the browser polyfi
 import '@dojo/shim/browser';
 ```
 
+*Note*: Other Dojo 2 packages will include these dependencies.  You only need to worry about this if you are using this package stand alone.
+
 ## Features
 
 Many of the features in this package will fallback to a native implementation if one is available.
