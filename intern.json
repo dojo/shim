@@ -1,4 +1,11 @@
 {
+	"capabilities": {
+		"project": "Dojo 2",
+		"name": "@dojo/shim",
+		"fixSessionCapabilities": false,
+		"browserstack.debug": false
+	},
+
 	"environments": [
 		{ "browserName": "node" }
 	],
@@ -30,21 +37,8 @@
 	],
 
 	"configs": {
-		"remoteCapabilities": {
-			"capabilities": {
-				"project": "Dojo 2",
-				"name": "@dojo/shim",
-				"fixSessionCapabilities": false
-			}
-		},
-
 		"browserstack": {
-			"extends": [ "remoteCapabilities" ],
-
 			"tunnel": "browserstack",
-			"capabilities+": {
-				"browserstack.debug": false
-			},
 
 			"environments+": [
 				{ "browserName": "internet explorer", "version": "11" },
@@ -57,8 +51,6 @@
 		},
 
 		"local": {
-			"extends": [ "remoteCapabilities" ],
-
 			"tunnel": "selenium",
 			"tunnelOptions": {
 				"hostname": "localhost",
@@ -71,8 +63,6 @@
 		},
 
 		"saucelabs": {
-			"extends": [ "remoteCapabilities" ],
-
 			"tunnel": "saucelabs",
 			"tunnelOptions": {},
 
