@@ -138,10 +138,11 @@ else {
 	 * @return A proper length
 	 */
 	const toLength = function toLength(length: number): number {
-		length = Number(length);
 		if (isNaN(length)) {
 			return 0;
 		}
+
+		length = Number(length);
 		if (isFinite(length)) {
 			length = Math.floor(length);
 		}
@@ -190,11 +191,18 @@ else {
 		/* tslint:disable-next-line:variable-name */
 		const Constructor = this;
 		const length: number = toLength((<any> arrayLike).length);
+
 		// Support extension
 		const array: any[] = (typeof Constructor === 'function') ? <any[]> Object(new Constructor(length)) : new Array(length);
 
 		if (!isArrayLike(arrayLike) && !isIterable(arrayLike)) {
 			return array;
+		}
+
+		// if this is an array and the normalized length is 0, just return an empty array. this prevents a problem
+		// with the iteration on IE when using a NaN array length.
+		if (isArrayLike(arrayLike) && length === 0) {
+			return [];
 		}
 
 		let i = 0;
