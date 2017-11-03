@@ -132,7 +132,9 @@ add('es6-string', () => {
 
 add('es6-string-raw', () => {
 	function getCallSite(callSite: TemplateStringsArray, ...substitutions: any[]) {
-		return callSite;
+		const result = [...callSite];
+		(<any> result).raw = callSite.raw;
+		return result;
 	}
 
 	if ('raw' in global.String) {

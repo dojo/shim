@@ -218,8 +218,10 @@ registerSuite('string functions', {
 			assert.strictEqual(stringUtil.raw`The answer is:\n${answer}`, 'The answer is:\\n42',
 				'stringUtil.raw applied to template string should result in expected value');
 
-			function getCallSite(callSite: TemplateStringsArray, ...substitutions: any[]) {
-				return callSite;
+			function getCallSite(callSite: TemplateStringsArray, ...substitutions: any[]): TemplateStringsArray {
+				const result = [...callSite];
+				(<any> result).raw = callSite.raw;
+				return <any> result;
 			}
 
 			let callSite = getCallSite`The answer is:\n${answer}`;

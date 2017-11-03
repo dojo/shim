@@ -19,13 +19,12 @@
 		"sourceMap": true,
 		"target": "es5",
 		"moduleResolution": "node",
-		"strictNullChecks": true,
+		"strict": true,
 		"noImplicitThis": true,
 		"importHelpers": true,
 		"types": [ "intern" ]
 	},
 	"include": [
-		"./typings/index.d.ts",
 		"./src/**/*.ts",
 		"./tests/**/*.ts"
 	]
