@@ -1,9 +1,10 @@
 import global from './global';
+import * as tslib from 'tslib';
 
 /**
  * Provide any overrides and then load the TypeScript helpers.
  */
-global.__values = function (o: any) {
+(<any> tslib).__values = global.__values = function (o: any) {
 	let m = typeof Symbol === 'function' && o[ Symbol.iterator ], i = 0;
 	if (m) {
 		return m.call(o);
