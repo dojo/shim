@@ -21,7 +21,7 @@
     "test": "grunt test"
   },
   "peerDependencies": {
-    "@dojo/has": "file:./tarballs/dojo-has-0.1.1-alpha.1.tgz"
+    "@dojo/has": "file:./tarballs/dojo-has-0.1.1-beta.1.tgz"
   },
   "devDependencies": {
     "@dojo/loader": "~0.1.0",
