@@ -21,10 +21,10 @@
     "test": "grunt test"
   },
   "peerDependencies": {
-    "@dojo/has": "file:./tarballs/dojo-has-0.1.1-beta.1.tgz"
+    "@dojo/has": "./tarballs/dojo-has-0.1.1-beta.1.tgz"
   },
   "devDependencies": {
-    "@dojo/loader": "~0.1.0",
+    "@dojo/loader": "./tarballs/dojo-loader-0.1.1-beta.1.tgz",
     "@types/chai": "~3.4.0",
     "@types/glob": "~5.0.0",
     "@types/grunt": "~0.4.0",
