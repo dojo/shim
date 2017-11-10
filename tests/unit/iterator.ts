@@ -1,4 +1,4 @@
-import { ShimIterator } from '../../src/iterator';
+import { forOf, ShimIterator } from '../../src/iterator';
 import '../../src/Symbol';
 
 const { registerSuite } = intern.getInterface('object');
@@ -83,6 +83,67 @@ registerSuite('iterator', {
 			}
 
 			assert.deepEqual(results, expected);
+		},
+
+		'scoping'() {
+			const array = [ 'a', 'b' ];
+			const scope = { foo: 'bar' };
+
+			forOf(array, function (this: any, value: any, obj: any) {
+				assert.strictEqual(this, scope);
+				assert.strictEqual(obj, array);
+			}, scope);
+		},
+
+		'doBreak': {
+			strings() {
+				const str = 'abcdefg';
+				let counter = 0;
+				const results: string[] = [];
+				const expected = [ 'a', 'b', 'c' ];
+
+				forOf(str, (value, str, doBreak) => {
+					results.push(value);
+					counter++;
+					if (counter >= 3) {
+						doBreak();
+					}
+				});
+
+				assert.deepEqual(results, expected);
+			},
+			iterable() {
+				let counter = 0;
+				const iterable = {
+					[Symbol.iterator]() {
+						return {
+							next(): {value: number | undefined, done: boolean} {
+								counter++;
+								if (counter < 5) {
+									return {
+										value: counter,
+										done: false
+									};
+								}
+								else {
+									return { done: true, value: undefined };
+								}
+							}
+						};
+					}
+				};
+				const results: (undefined | number)[] = [];
+				const expected = [ 1, 2 ];
+
+				forOf(iterable, (value, obj, doBreak) => {
+					results.push(value);
+					if (value === 2) {
+						doBreak();
+					}
+				});
+
+				assert.deepEqual(results, expected);
+			}
 		}
 	},
 
