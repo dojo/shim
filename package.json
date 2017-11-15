@@ -1,6 +1,6 @@
 {
   "name": "@dojo/shim",
-  "version": "0.2.3-pre",
+  "version": "0.3.0-pre",
   "description": "Modules that provide modular fills of ES6+ functionality",
   "homepage": "https://dojo.io",
   "bugs": {
@@ -21,7 +21,7 @@
     "test": "grunt test"
   },
   "peerDependencies": {
-    "@dojo/has": "./tarballs/dojo-has-0.1.1-beta.1.tgz"
+    "@dojo/has": "./tarballs/dojo-has-0.2.0-beta.1.tgz"
   },
   "devDependencies": {
     "@dojo/loader": "./tarballs/dojo-loader-0.1.1-beta.1.tgz",
