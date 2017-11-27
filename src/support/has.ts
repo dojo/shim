@@ -132,8 +132,8 @@ add('es6-string', () => {
 
 add('es6-string-raw', () => {
 	function getCallSite(callSite: TemplateStringsArray, ...substitutions: any[]) {
-		const result = [...callSite];
-		(<any> result).raw = callSite.raw;
+		const result = [ ...callSite ];
+		(result as any).raw = callSite.raw;
 		return result;
 	}
 
@@ -141,7 +141,7 @@ add('es6-string-raw', () => {
 		let b = 1;
 		let callSite = getCallSite`a\n${b}`;
 
-		(<any> callSite).raw = [ 'a\\n' ];
+		(callSite as any).raw = [ 'a\\n' ];
 		const supportsTrunc = global.String.raw(callSite, 42) === 'a:\\n';
 
 		return supportsTrunc;
