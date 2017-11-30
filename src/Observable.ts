@@ -485,7 +485,7 @@ if (!has('es-observable')) {
 					return new constructor((observer: SubscriptionObserver<U>) => {
 						if (isArrayLike(item)) {
 							for (let i = 0; i < item.length; i++) {
-								observer.next(item[ i ]);
+								observer.next(item[i]);
 							}
 						}
 						else {

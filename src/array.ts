@@ -207,13 +207,13 @@ else {
 			}
 
 			for (let i = 0; i < arrayLike.length; i++) {
-				array[ i ] = mapFunction ? mapFunction(arrayLike[ i ], i) : arrayLike[ i ];
+				array[i] = mapFunction ? mapFunction(arrayLike[i], i) : arrayLike[i];
 			}
 		}
 		else {
 			let i = 0;
 			for (const value of arrayLike) {
-				array[ i ] = mapFunction ? mapFunction(value, i) : value;
+				array[i] = mapFunction ? mapFunction(value, i) : value;
 				i++;
 			}
 		}

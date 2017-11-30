@@ -105,8 +105,8 @@ if (!has('es6-weakmap')) {
 			if (iterable) {
 				if (isArrayLike(iterable)) {
 					for (let i = 0; i < iterable.length; i++) {
-						const item = iterable[ i ];
-						this.set(item[ 0 ], item[ 1 ]);
+						const item = iterable[i];
+						this.set(item[0], item[1]);
 					}
 				}
 				else {

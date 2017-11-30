@@ -112,7 +112,7 @@ if (!has('es6-set')) {
 			if (iterable) {
 				if (isArrayLike(iterable)) {
 					for (let i = 0; i < iterable.length; i++) {
-						this.add(iterable[ i ]);
+						this.add(iterable[i]);
 					}
 				}
 				else {
