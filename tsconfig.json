@@ -1,5 +1,4 @@
 {
-	"version": "2.0.2",
 	"compilerOptions": {
 		"declaration": true,
 		"experimentalDecorators": true,
@@ -13,7 +12,6 @@
 			"es2015.symbol.wellknown"
 		],
 		"downlevelIteration": true,
-		"no-unused-variable": true,
 		"outDir": "_build/",
 		"removeComments": false,
 		"sourceMap": true,
