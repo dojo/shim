@@ -13,6 +13,7 @@
 			"es2015.symbol.wellknown"
 		],
 		"downlevelIteration": true,
+		"no-unused-variable": true,
 		"outDir": "_build/",
 		"removeComments": false,
 		"sourceMap": true,
