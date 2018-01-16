@@ -33,7 +33,6 @@ function shimAmdDependencies(config: any) {
 		location: 'node_modules/web-animations-js'
 	});
 
-
 	addIfNotPresent(packages, {
 		name: '@dojo',
 		location: 'node_modules/@dojo'
