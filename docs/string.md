@@ -5,7 +5,7 @@
 Returns the UTF-16 encoded code point value of a position in a string.
 
 ```ts
-import { codePointAt } from 'src/string';
+import { codePointAt } from '@dojo/shim/string';
 
 const str = 'string';
 const position = 2; // zero index based position
@@ -20,7 +20,7 @@ result === 114; // true
 Determines whether a string ends with the given substring.
 
 ```ts
-import { endsWith } from 'src/string';
+import { endsWith } from '@dojo/shim/string';
 
 const str = 'string';
 const search = 'ing';
@@ -36,7 +36,7 @@ result === true; // true
 Creates a string using the specified sequence of code points.
 
 ```ts
-import { fromCodePoint } from 'src/string';
+import { fromCodePoint } from '@dojo/shim/string';
 
 const result = fromCodePoint(97, 98, 99, 49, 50, 51);
 
@@ -48,7 +48,7 @@ result === 'abc123'; // true
 Determines whether a string includes the given substring.
 
 ```ts
-import { includes } from 'src/string';
+import { includes } from '@dojo/shim/string';
 
 const str = 'string';
 const search = 'ring';
@@ -64,7 +64,7 @@ result === true; // true
 Returns a string containing a string repeated a given number of times.
 
 ```ts
-import { repeat } from 'src/string';
+import { repeat } from '@dojo/shim/string';
 
 const str = 'string';
 const times = 3; // the number of times to repeat the string
@@ -79,7 +79,7 @@ result === 'stringstringstring'; // true
 Determines whether a string begins with the given substring.
 
 ```ts
-import { startsWith } from 'src/string';
+import { startsWith } from '@dojo/shim/string';
 
 const str = 'string';
 const search = 'str';
@@ -98,7 +98,7 @@ The `string` module also contains the following utility functions:
 Escapes a string to safely be included in regular expressions.
 
 ```ts
-import { escapeRegExp } from 'src/string';
+import { escapeRegExp } from '@dojo/shim/string';
 
 const str = 'cat file.js | grep -c';
 
@@ -113,7 +113,7 @@ result === 'cat file\\.js \\| grep -c'; // true
 Escapes XML (or HTML) content in a string.
 
 ```ts
-import { escapeXml } from 'src/string';
+import { escapeXml } from '@dojo/shim/string';
 
 const badCode = "<script>alert('hi')</script>";
 
@@ -127,7 +127,7 @@ sanitized === '&lt;script&gt;alert(&#39;hi&#39;)&lt;/script&gt;'; // true
 Adds padding to the end of a string to ensure it is a certain length.
 
 ```ts
-import { padEnd } from 'src/string';
+import { padEnd } from '@dojo/shim/string';
 
 const str = 'string';
 const length = 10;
@@ -143,7 +143,7 @@ result === 'string===='; // true
 Adds padding to the beginning of a string to ensure it is a certain length.
 
 ```ts
-import { padStart } from 'src/string';
+import { padStart } from '@dojo/shim/string';
 
 const str = 'string';
 const length = 10;
