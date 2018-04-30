@@ -203,7 +203,6 @@ or
 	"api": "docs/api.json",
 	"pages": [
 		"docs/array.md",
-		"docs/lang.md",
 		"docs/Map.md",
 		"docs/math.md",
 		"docs/Observable.md",
