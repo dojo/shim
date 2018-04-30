@@ -207,8 +207,7 @@ or
 		"docs/math.md",
 		"docs/Observable.md",
 		"docs/Promise.md",
-		"docs/string.md",
-		"docs/UrlSearchParams.md"
+		"docs/string.md"
 	]
 }
 -->
