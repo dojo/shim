@@ -93,35 +93,6 @@ Special thanks to Mathias Bynens for granting permission to adopt code from his 
 
 The `string` module also contains the following utility functions:
 
-## `escapeRegExp`
-
-Escapes a string to safely be included in regular expressions.
-
-```ts
-import { escapeRegExp } from '@dojo/shim/string';
-
-const str = 'cat file.js | grep -c';
-
-const result = escapeRegExp(str);
-
-result === 'cat file\\.js \\| grep -c'; // true
-
-```
-
-## `escapeXml`
-
-Escapes XML (or HTML) content in a string.
-
-```ts
-import { escapeXml } from '@dojo/shim/string';
-
-const badCode = "<script>alert('hi')</script>";
-
-const sanitized = escapeXml(badCode);
-
-sanitized === '&lt;script&gt;alert(&#39;hi&#39;)&lt;/script&gt;'; // true
-```
-
 ## `padEnd`
 
 Adds padding to the end of a string to ensure it is a certain length.
