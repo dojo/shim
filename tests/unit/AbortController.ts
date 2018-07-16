@@ -76,7 +76,25 @@ registerSuite('AbortController and AbortSignal', {
 			return new Promise((resolve) => {
 				let called = 0;
 				const expectedCalls = 2;
-				const createEvent = (type: string) => (global.Event ? new Event(type) : ({ type } as Event));
+				const createEvent = (type: string) => {
+					let event: Event;
+					try {
+						event = new Event(type);
+					} catch (e) {
+						if (typeof document !== 'undefined') {
+							event = document.createEvent('Event');
+							event.initEvent(type, false, false);
+						}
+						else {
+							event = {
+								type,
+								bubbles: false,
+								cancelable: false
+							} as Event;
+						}
+					}
+					return event;
+				};
 				const callback = () => {
 					called++;
 					if (called === expectedCalls) {
